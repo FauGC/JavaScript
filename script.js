@@ -247,6 +247,11 @@ function mostrarCarrito() {
     });
 }
 
+// Función para obtener la imagen del producto (si no existe, puedes usar una imagen predeterminada)
+function obtenerImagen(nombre) {
+    const producto = productos.find(item => item.nombre === nombre);
+    return producto ? producto.imagen : 'imagen-predeterminada.jpg'; // Si no tiene imagen, usa una predeterminada
+}
 
 // Asignar el evento para el botón "Ver carrito"
 document.querySelector('.ver-carrito').addEventListener('click', mostrarCarrito);
