@@ -1,17 +1,288 @@
-/* Error: Can't find stylesheet to import.
- *   ,
- * 4 | @use './SassPartials/catalogo';
- *   | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
- *   '
- *   indexstyle.scss 4:1  root stylesheet */
-
-body::before {
-  font-family: "Source Code Pro", "SF Mono", Monaco, Inconsolata, "Fira Mono",
-      "Droid Sans Mono", monospace, monospace;
-  white-space: pre;
-  display: block;
-  padding: 1em;
-  margin-bottom: 1em;
-  border-bottom: 2px solid black;
-  content: "Error: Can't find stylesheet to import.\a   \2577 \a 4 \2502  @use './SassPartials/catalogo';\d\a   \2502  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\a   \2575 \a   indexstyle.scss 4:1  root stylesheet";
+/* indexstyle.scss */
+* {
+  margin: 0;
+  padding: 0;
+  font-family: "Sawarabi Gothic", sans-serif;
+  box-sizing: border-box;
 }
+
+.body-index {
+  font-family: Arial, sans-serif;
+  background: linear-gradient(to bottom, #e4fcaf, #ffffff);
+  width: 100%;
+  text-align: center;
+  margin: 0;
+}
+
+.logo {
+  background: radial-gradient(circle, rgb(246, 238, 0), rgb(255, 255, 255));
+  width: 100%;
+  height: 280px;
+  text-align: center;
+}
+.logo img {
+  width: auto;
+  height: 280px;
+  object-fit: contain;
+}
+
+.eslogan {
+  background: linear-gradient(to bottom, #7d7f01, #d1cd00);
+  width: 100%;
+  height: 70px;
+}
+.eslogan h1 {
+  padding-top: 20px;
+  text-align: center;
+  font-size: 2rem;
+  color: #ffffff;
+  font-style: italic;
+}
+
+.titulodecatalogo {
+  background: linear-gradient(to bottom, #7d7f01, #fafc89);
+  padding: 10px 0;
+}
+.titulodecatalogo h1 {
+  text-align: center;
+}
+
+.main-index {
+  margin-bottom: 100px;
+}
+
+.catalogos-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  padding: 50px 0;
+  gap: 30px;
+}
+
+.categoria {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  padding-bottom: 50px;
+  padding-top: 50px;
+  background-color: #fff;
+  border-radius: 15px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  margin-bottom: 10px;
+}
+.categoria h2 {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #333;
+  margin-bottom: 20px;
+}
+
+.productos {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 15px;
+}
+
+.catalogo {
+  background: #fff;
+  border-radius: 15px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  max-width: 300px;
+  padding: 20px;
+  box-sizing: border-box;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  min-height: 380px;
+  margin: 10px 0;
+}
+
+.imagen-producto img {
+  display: flex;
+  width: 100px;
+  height: 100px;
+}
+
+.catalogo h3 {
+  font-size: 1.2rem;
+  color: #333;
+  margin-bottom: 10px;
+}
+
+.catalogo .precio {
+  font-size: 1.1rem;
+  color: #333;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.catalogo .stock {
+  font-size: 1rem;
+  margin: 10px 0;
+}
+
+.catalogo img {
+  width: 100%;
+  height: auto;
+  border-radius: 10px;
+  margin-bottom: 10px;
+}
+
+.catalogo button {
+  font-size: 1rem;
+  padding: 10px 20px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-top: 15px;
+  width: 100%;
+}
+.catalogo button:hover {
+  background-color: #0056b3;
+}
+
+.ver-carrito {
+  background-color: #28a745;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-top: 30px;
+  display: block;
+  width: 200px;
+  margin: 30px auto;
+}
+.ver-carrito:hover {
+  background-color: #218838;
+}
+
+.item-carrito {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border: 1px solid #ccc;
+  padding: 1rem;
+  margin: 0.5rem;
+  border-radius: 10px;
+  background-color: #f9f9f9;
+  box-sizing: border-box;
+  width: 300px;
+  text-align: center;
+}
+.item-carrito img {
+  width: 100px;
+  height: 100px;
+  object-fit: cover;
+  border-radius: 5px;
+}
+.item-carrito button {
+  width: 50px;
+  height: 50px;
+  padding: 5px;
+  font-size: 16px;
+  background-color: #007bff;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.productos-carrito {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  justify-content: flex-start;
+}
+
+#carrito-container {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  text-align: center;
+  align-items: center;
+}
+
+.item-carrito button:hover {
+  background-color: #0056b3;
+}
+
+.item-carrito button.eliminar {
+  width: 100px;
+  border-radius: 5px;
+  background-color: #e74c3c;
+  color: white;
+}
+
+.item-carrito button.eliminar:hover {
+  background-color: #d35400;
+}
+
+.boton {
+  display: flex;
+}
+
+.total-carrito {
+  display: flex;
+  border: 1px solid #ccc;
+  padding: 1rem;
+  margin: 0.5rem;
+  border-radius: 10px;
+  background-color: #f9f9f9;
+  box-sizing: border-box;
+  width: 250px;
+  text-align: center;
+}
+
+.btn-enviar-consulta {
+  padding: 0.5rem 1rem;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 1rem;
+  transition: background-color 0.3s ease;
+}
+.btn-enviar-consulta:hover {
+  background-color: #0056b3;
+}
+
+.imagen {
+  background: radial-gradient(circle, rgb(245, 241, 124), rgb(255, 255, 255));
+  width: 100%;
+  height: 200px;
+  text-align: center;
+  box-sizing: border-box;
+  margin-bottom: 100px;
+}
+.imagen img {
+  width: 100%;
+  height: 300px;
+  padding: 0;
+  display: block;
+}
+
+.footer-index {
+  background: radial-gradient(circle, rgb(245, 241, 124), rgb(255, 255, 255));
+  width: 100%;
+  height: 200px;
+  text-align: center;
+  box-sizing: border-box;
+}
+.footer-index img {
+  width: 100%;
+  height: 300px;
+  padding: 0;
+  display: block;
+}
+
+/*# sourceMappingURL=indexstyle.css.map */
