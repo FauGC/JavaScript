@@ -24,7 +24,7 @@ const productos =[
     {id:22, nombre: "Caipirinha sin alcohol", categoria: "servicio-habitacion", subcategoria:"bebida sin alcohol", stock: 2000, precio: 4, pasajeros:null, imagen:"caipirinha.PNG"},
     {id:23, nombre: "Caipiroska sin alcohol", categoria: "servicio-habitacion", subcategoria:"bebida sin alcohol", stock: 2000, precio: 4, pasajeros:null, imagen:"caipiroska.jpg"},
     {id:24, nombre: "Licuado", categoria: "servicio-habitacion", subcategoria:"bebida sin alcohol", stock: 2000, precio: 2, pasajeros:null, imagen:"licuado.jpg"},
-    {id:25, nombre: "Jugo de frutas", categoria: "servicio-habitacion", subcategoria:"bebida sin alcohol", stock: 2000, precio: 2, pasajeros:null, imagen:"juegodefrutas.png"},
+    {id:25, nombre: "Jugo de frutas", categoria: "servicio-habitacion", subcategoria:"bebida sin alcohol", stock: 2000, precio: 2, pasajeros:null, imagen:"juegodefrutas.jpg"},
     {id:26, nombre: "Gaseosa", categoria: "servicio-habitacion", subcategoria:"bebida sin alcohol", stock: 2000, precio: 3, pasajeros:null, imagen:"gaseosa.PNG"},
     
     
@@ -47,7 +47,7 @@ const productos =[
     {id:43, nombre: "Caipirinha sin alcohol", categoria: "servicio-playa", subcategoria:"bebida sin alcohol", stock: 2000, precio: 5, pasajeros:null, imagen:"caipirinha.PNG"},
     {id:44, nombre: "Caipiroska sin alcohol", categoria: "servicio-playa", subcategoria:"bebida sin alcohol", stock: 2000, precio: 5, pasajeros:null , imagen:"caipiroska.jpg"},
     {id:45, nombre: "Licuado", categoria: "servicio-playa", subcategoria:"bebida sin alcohol", stock: 2000, precio: 3, pasajeros:null , imagen:"licuado.jpg"},
-    {id:46, nombre: "Jugo de frutas", categoria: "servicio-playa", subcategoria:"bebida sin alcohol", stock: 2000, precio: 3, pasajeros:null , imagen:"juegodefrutas.png"},
+    {id:46, nombre: "Jugo de frutas", categoria: "servicio-playa", subcategoria:"bebida sin alcohol", stock: 2000, precio: 3, pasajeros:null , imagen:"juegodefrutas.jpg"},
     {id:47, nombre: "Gaseosa", categoria: "servicio-playa", subcategoria:"bebida sin alcohol", stock: 2000, precio: 3, pasajeros:null, imagen:"gaseosa.PNG" },
     {id:48, nombre: "Alquiler de reposera", categoria: "servicio-playa", subcategoria:"bebida sin alcohol", stock: 2000, precio: 2, pasajeros:null, imagen:"reposera.PNG" },
     {id:49, nombre: "Alquiler de mesa de playa", categoria: "servicio-playa", subcategoria:"bebida sin alcohol", stock: 2000, precio: 2, pasajeros:null , imagen:"mesitadeplaya.PNG" },
