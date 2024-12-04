@@ -1,57 +1,57 @@
 const productos =[
-  {id:1, nombre: "habitacion grand", categoria: "habitaciones", subcategoria:"habitaciones", stock: 10, precio: 160, pasajeros:6, imagen:"grand.png" },
-  {id:2, nombre: "habitacion quintuple", categoria: "habitaciones", subcategoria:"habitaciones", stock: 10, precio: 140, pasajeros:5, imagen:"grand.png" },
-  {id:3, nombre: "habitacion cuadruple", categoria: "habitaciones", subcategoria:"habitaciones", stock: 10, precio: 120, pasajeros:4, imagen:"grand.png" },
-  {id:4, nombre: "habitacion triple", categoria: "habitaciones", subcategoria:"habitaciones", stock: 10, precio: 100, pasajeros:3, imagen:"grand.png" },
-  {id:5, nombre: "habitacion doble", categoria: "habitaciones", subcategoria:"habitaciones", stock: 10, precio: 80, pasajeros:2, imagen:"grand.png" },
+    {id:1, nombre: "Habitación grand", categoria: "habitaciones", subcategoria:"habitaciones", stock: 10, precio: 160, pasajeros:6, imagen:"grand.jpg" },
+    {id:2, nombre: "Habitación quintuple", categoria: "habitaciones", subcategoria:"habitaciones", stock: 10, precio: 140, pasajeros:5, imagen:"quintuple.jpg" },
+    {id:3, nombre: "Habitación cuadruple", categoria: "habitaciones", subcategoria:"habitaciones", stock: 10, precio: 120, pasajeros:4, imagen:"cuadruple.jpg" },
+    {id:4, nombre: "Habitación triple", categoria: "habitaciones", subcategoria:"habitaciones", stock: 10, precio: 100, pasajeros:3, imagen:"triple.jpg" },
+    {id:5, nombre: "Habitación doble", categoria: "habitaciones", subcategoria:"habitaciones", stock: 10, precio: 80, pasajeros:2, imagen:"doble.jpg" },
 
-  {id:6, nombre: "café", categoria: "servicio-habitacion", subcategoria:"bebida - infusión", stock: 1000, precio: 4, pasajeros:null, imagen:"cafe.jpg" },
-  {id:7, nombre: "té", categoria: "servicio-habitacion", subcategoria:"bebida - infusión", stock: 1000, precio: 4, pasajeros:null, imagen:"te.jpeg" },
-  {id:8, nombre: "mate cocido", categoria: "servicio-habitacion", subcategoria:"bebida - infusión", stock: 1000, precio: 3, pasajeros:null, imagen:"matecocido.jpg" },
-  {id:9, nombre: "medialunas", categoria: "servicio-habitacion", subcategoria:"alimento - panificado", stock: 2000, precio: 2, pasajeros:null, imagen:"medialunas.jpg"},
-  {id:10, nombre: "tostadas", categoria: "servicio-habitacion", subcategoria:"alimento - panificado", stock: 2000, precio: 2, pasajeros:null, imagen:"tostadas.jpg"},
-  {id:11, nombre: "milanesas", categoria: "servicio-habitacion", subcategoria:"alimento - carne", stock: 2000, precio: 5, pasajeros:null, imagen:"milanesas.png"},
-  {id:12, nombre: "asado de banderitas", categoria: "servicio-habitacion", subcategoria:"alimento - carne", stock: 2000, precio: 8, pasajeros:null, imagen:"asadobanderita.PNG"},
-  {id:13, nombre: "pure", categoria: "servicio-habitacion", subcategoria:"alimento - guarnición", stock: 2000, precio: 4, pasajeros:null, imagen:"pure.jpg"},
-  {id:14, nombre: "ensalada", categoria: "servicio-habitacion", subcategoria:"alimento - guarnición", stock: 2000, precio: 4, pasajeros:null, imagen:"ensalada.jpg"},
-  {id:15, nombre: "papas fritas", categoria: "servicio-habitacion", subcategoria:"alimento - guarnición", stock: 2000, precio: 2, pasajeros:null, imagen:"papasfritas.jpg"},
-  {id:16, nombre: "caipirinha", categoria: "servicio-habitacion", subcategoria:"bebida alcoholica", stock: 1000, precio: 5, pasajeros:null, imagen:"caipirinha.PNG"},
-  {id:17, nombre: "caipiroska", categoria: "servicio-habitacion", subcategoria:"bebida alcoholica", stock: 1000, precio: 5, pasajeros:null, imagen:"caipiroska.jpg"},
-  {id:18, nombre: "fernet-cola", categoria: "servicio-habitacion", subcategoria:"bebida alcoholica", stock: 1000, precio: 5, pasajeros:null, imagen:"fernetcola.png"},
-  {id:19, nombre: "gancia-limón", categoria: "servicio-habitacion", subcategoria:"bebida alcoholica", stock: 1000, precio: 5, pasajeros:null, imagen:"gancia-limon.jpg"},
-  {id:20, nombre: "cerveza", categoria: "servicio-habitacion", subcategoria:"bebida alcoholica", stock: 2000, precio: 3, pasajeros:null, imagen:"cerveza.PNG"},
-  {id:21, nombre: "agua", categoria: "servicio-habitacion", subcategoria:"bebida sin alcohol", stock: 2000, precio: 1, pasajeros:null, imagen:"agua.PNG"},
-  {id:22, nombre: "caipirinha sin alcohol", categoria: "servicio-habitacion", subcategoria:"bebida sin alcohol", stock: 2000, precio: 4, pasajeros:null, imagen:"caipirinha.PNG"},
-  {id:23, nombre: "caipiroska sin alcohol", categoria: "servicio-habitacion", subcategoria:"bebida sin alcohol", stock: 2000, precio: 4, pasajeros:null, imagen:"caipiroska.jpg"},
-  {id:24, nombre: "licuado", categoria: "servicio-habitacion", subcategoria:"bebida sin alcohol", stock: 2000, precio: 2, pasajeros:null, imagen:"licuado.jpg"},
-  {id:25, nombre: "jugo de frutas", categoria: "servicio-habitacion", subcategoria:"bebida sin alcohol", stock: 2000, precio: 2, pasajeros:null, imagen:"juegodefrutas.png"},
-  {id:26, nombre: "gaseosa", categoria: "servicio-habitacion", subcategoria:"bebida sin alcohol", stock: 2000, precio: 3, pasajeros:null, imagen:"gaseosa.PNG"},
-  
-  
-  {id:27, nombre: "café", categoria: "servicio-playa", subcategoria:"bebida - infusión", stock: 1000, precio: 5, pasajeros:null, imagen:"cafe.jpg" },
-  {id:28, nombre: "té", categoria: "servicio-playa", subcategoria:"bebida - infusión", stock: 1000, precio: 5, pasajeros:null, imagen:"te.jpeg" },
-  {id:29, nombre: "mate cocido", categoria: "servicio-playa", subcategoria:"bebida - infusión", stock: 1000, precio: 4, pasajeros:null, imagen:"matecocido.jpg" },
-  {id:30, nombre: "medialunas", categoria: "servicio-playa", subcategoria:"alimento - panificado", stock: 2000, precio: 3, pasajeros:null, imagen:"medialunas.jpg"},
-  {id:31, nombre: "tostadas", categoria: "servicio-playa", subcategoria:"alimento - panificado", stock: 2000, precio: 3, pasajeros:null, imagen:"tostadas.jpg"},
-  {id:32, nombre: "milanesas", categoria: "servicio-playa", subcategoria:"alimento - carne", stock: 2000, precio: 6, pasajeros:null, imagen:"milanesas.png"},
-  {id:33, nombre: "asado de banderitas", categoria: "servicio-playa", subcategoria:"alimento - carne", stock: 2000, precio: 8, pasajeros:null, imagen:"asadobanderita.PNG"},
-  {id:34, nombre: "pure", categoria: "servicio-playa", subcategoria:"alimento - guarnición", stock: 2000, precio: 5, pasajeros:null, imagen:"pure.jpg"},
-  {id:35, nombre: "ensalada", categoria: "servicio-playa", subcategoria:"alimento - guarnición", stock: 2000, precio: 5, pasajeros:null, imagen:"ensalada.jpg"},
-  {id:36, nombre: "papas fritas", categoria: "servicio-playa", subcategoria:"alimento - guarnición", stock: 2000, precio: 3, pasajeros:null, imagen:"papasfritas.jpg"},
-  {id:37, nombre: "caipirinha", categoria: "servicio-playa", subcategoria:"bebida alcoholica", stock: 1000, precio: 6, pasajeros:null, imagen:"caipirinha.PNG"},
-  {id:38, nombre: "caipiroska", categoria: "servicio-playa", subcategoria:"bebida alcoholica", stock: 1000, precio: 6, pasajeros:null, imagen:"caipiroska.jpg"},
-  {id:39, nombre: "fernet-cola", categoria: "servicio-playa", subcategoria:"bebida alcoholica", stock: 1000, precio: 6, pasajeros:null, imagen:"fernetcola.png"},
-  {id:40, nombre: "gancia-limón", categoria: "servicio-playa", subcategoria:"bebida alcoholica", stock: 1000, precio: 6, pasajeros:null, imagen:"gancia-limon.jpg"},
-  {id:41, nombre: "cerveza", categoria: "servicio-playa", subcategoria:"bebida alcoholica", stock: 2000, precio: 4, pasajeros:null, imagen:"cerveza.PNG"},
-  {id:42, nombre: "agua", categoria: "servicio-playa", subcategoria:"bebida sin alcohol", stock: 2000, precio: 2, pasajeros:null, imagen:"agua.PNG"},
-  {id:43, nombre: "caipirinha sin alcohol", categoria: "servicio-playa", subcategoria:"bebida sin alcohol", stock: 2000, precio: 5, pasajeros:null, imagen:"caipirinha.PNG"},
-  {id:44, nombre: "caipiroska sin alcohol", categoria: "servicio-playa", subcategoria:"bebida sin alcohol", stock: 2000, precio: 5, pasajeros:null , imagen:"caipiroska.jpg"},
-  {id:45, nombre: "licuado", categoria: "servicio-playa", subcategoria:"bebida sin alcohol", stock: 2000, precio: 3, pasajeros:null , imagen:"licuado.jpg"},
-  {id:46, nombre: "jugo de frutas", categoria: "servicio-playa", subcategoria:"bebida sin alcohol", stock: 2000, precio: 3, pasajeros:null , imagen:"juegodefrutas.png"},
-  {id:47, nombre: "gaseosa", categoria: "servicio-playa", subcategoria:"bebida sin alcohol", stock: 2000, precio: 3, pasajeros:null, imagen:"gaseosa.PNG" },
-  {id:48, nombre: "reposera", categoria: "servicio-playa", subcategoria:"bebida sin alcohol", stock: 2000, precio: 2, pasajeros:null, imagen:"reposera.PNG" },
-  {id:49, nombre: "mesa de playa", categoria: "servicio-playa", subcategoria:"bebida sin alcohol", stock: 2000, precio: 2, pasajeros:null , imagen:"mesitadeplaya.PNG" },
-   {id:50, nombre: "sombrilla", categoria: "servicio-playa", subcategoria:"bebida sin alcohol", stock: 2000, precio: 2, pasajeros:null , imagen:"sombrilla.PNG" },
+    {id:6, nombre: "Café", categoria: "servicio-habitacion", subcategoria:"bebida - infusión", stock: 1000, precio: 4, pasajeros:null, imagen:"cafe.jpg" },
+    {id:7, nombre: "Té", categoria: "servicio-habitacion", subcategoria:"bebida - infusión", stock: 1000, precio: 4, pasajeros:null, imagen:"te.jpeg" },
+    {id:8, nombre: "Mate cocido", categoria: "servicio-habitacion", subcategoria:"bebida - infusión", stock: 1000, precio: 3, pasajeros:null, imagen:"matecocido.jpg" },
+    {id:9, nombre: "Medialunas", categoria: "servicio-habitacion", subcategoria:"alimento - panificado", stock: 2000, precio: 2, pasajeros:null, imagen:"medialunas.jpg"},
+    {id:10, nombre: "Tostadas", categoria: "servicio-habitacion", subcategoria:"alimento - panificado", stock: 2000, precio: 2, pasajeros:null, imagen:"tostadas.jpg"},
+    {id:11, nombre: "Milanesas", categoria: "servicio-habitacion", subcategoria:"alimento - carne", stock: 2000, precio: 5, pasajeros:null, imagen:"milanesas.png"},
+    {id:12, nombre: "Asado de banderitas", categoria: "servicio-habitacion", subcategoria:"alimento - carne", stock: 2000, precio: 8, pasajeros:null, imagen:"asadobanderita.PNG"},
+    {id:13, nombre: "Pure", categoria: "servicio-habitacion", subcategoria:"alimento - guarnición", stock: 2000, precio: 4, pasajeros:null, imagen:"pure.jpg"},
+    {id:14, nombre: "Ensalada", categoria: "servicio-habitacion", subcategoria:"alimento - guarnición", stock: 2000, precio: 4, pasajeros:null, imagen:"ensalada.jpg"},
+    {id:15, nombre: "Papas fritas", categoria: "servicio-habitacion", subcategoria:"alimento - guarnición", stock: 2000, precio: 2, pasajeros:null, imagen:"papasfritas.jpg"},
+    {id:16, nombre: "Caipirinha", categoria: "servicio-habitacion", subcategoria:"bebida alcoholica", stock: 1000, precio: 5, pasajeros:null, imagen:"caipirinha.PNG"},
+    {id:17, nombre: "Caipiroska", categoria: "servicio-habitacion", subcategoria:"bebida alcoholica", stock: 1000, precio: 5, pasajeros:null, imagen:"caipiroska.jpg"},
+    {id:18, nombre: "Fernet-cola", categoria: "servicio-habitacion", subcategoria:"bebida alcoholica", stock: 1000, precio: 5, pasajeros:null, imagen:"fernetcola.png"},
+    {id:19, nombre: "Gancia-limón", categoria: "servicio-habitacion", subcategoria:"bebida alcoholica", stock: 1000, precio: 5, pasajeros:null, imagen:"gancia-limon.jpg"},
+    {id:20, nombre: "Cerveza", categoria: "servicio-habitacion", subcategoria:"bebida alcoholica", stock: 2000, precio: 3, pasajeros:null, imagen:"cerveza.PNG"},
+    {id:21, nombre: "Agua", categoria: "servicio-habitacion", subcategoria:"bebida sin alcohol", stock: 2000, precio: 1, pasajeros:null, imagen:"agua.PNG"},
+    {id:22, nombre: "Caipirinha sin alcohol", categoria: "servicio-habitacion", subcategoria:"bebida sin alcohol", stock: 2000, precio: 4, pasajeros:null, imagen:"caipirinha.PNG"},
+    {id:23, nombre: "Caipiroska sin alcohol", categoria: "servicio-habitacion", subcategoria:"bebida sin alcohol", stock: 2000, precio: 4, pasajeros:null, imagen:"caipiroska.jpg"},
+    {id:24, nombre: "Licuado", categoria: "servicio-habitacion", subcategoria:"bebida sin alcohol", stock: 2000, precio: 2, pasajeros:null, imagen:"licuado.jpg"},
+    {id:25, nombre: "Jugo de frutas", categoria: "servicio-habitacion", subcategoria:"bebida sin alcohol", stock: 2000, precio: 2, pasajeros:null, imagen:"juegodefrutas.png"},
+    {id:26, nombre: "Gaseosa", categoria: "servicio-habitacion", subcategoria:"bebida sin alcohol", stock: 2000, precio: 3, pasajeros:null, imagen:"gaseosa.PNG"},
+    
+    
+    {id:27, nombre: "Café", categoria: "servicio-playa", subcategoria:"bebida - infusión", stock: 1000, precio: 5, pasajeros:null, imagen:"cafe.jpg" },
+    {id:28, nombre: "Té", categoria: "servicio-playa", subcategoria:"bebida - infusión", stock: 1000, precio: 5, pasajeros:null, imagen:"te.jpeg" },
+    {id:29, nombre: "Mate cocido", categoria: "servicio-playa", subcategoria:"bebida - infusión", stock: 1000, precio: 4, pasajeros:null, imagen:"matecocido.jpg" },
+    {id:30, nombre: "Medialunas", categoria: "servicio-playa", subcategoria:"alimento - panificado", stock: 2000, precio: 3, pasajeros:null, imagen:"medialunas.jpg"},
+    {id:31, nombre: "Tostadas", categoria: "servicio-playa", subcategoria:"alimento - panificado", stock: 2000, precio: 3, pasajeros:null, imagen:"tostadas.jpg"},
+    {id:32, nombre: "Milanesas", categoria: "servicio-playa", subcategoria:"alimento - carne", stock: 2000, precio: 6, pasajeros:null, imagen:"milanesas.png"},
+    {id:33, nombre: "Asado de banderitas", categoria: "servicio-playa", subcategoria:"alimento - carne", stock: 2000, precio: 8, pasajeros:null, imagen:"asadobanderita.PNG"},
+    {id:34, nombre: "Pure", categoria: "servicio-playa", subcategoria:"alimento - guarnición", stock: 2000, precio: 5, pasajeros:null, imagen:"pure.jpg"},
+    {id:35, nombre: "Ensalada", categoria: "servicio-playa", subcategoria:"alimento - guarnición", stock: 2000, precio: 5, pasajeros:null, imagen:"ensalada.jpg"},
+    {id:36, nombre: "Papas fritas", categoria: "servicio-playa", subcategoria:"alimento - guarnición", stock: 2000, precio: 3, pasajeros:null, imagen:"papasfritas.jpg"},
+    {id:37, nombre: "Caipirinha", categoria: "servicio-playa", subcategoria:"bebida alcoholica", stock: 1000, precio: 6, pasajeros:null, imagen:"caipirinha.PNG"},
+    {id:38, nombre: "Caipiroska", categoria: "servicio-playa", subcategoria:"bebida alcoholica", stock: 1000, precio: 6, pasajeros:null, imagen:"caipiroska.jpg"},
+    {id:39, nombre: "Fernet-cola", categoria: "servicio-playa", subcategoria:"bebida alcoholica", stock: 1000, precio: 6, pasajeros:null, imagen:"fernetcola.png"},
+    {id:40, nombre: "Gancia-limón", categoria: "servicio-playa", subcategoria:"bebida alcoholica", stock: 1000, precio: 6, pasajeros:null, imagen:"gancia-limon.jpg"},
+    {id:41, nombre: "Cerveza", categoria: "servicio-playa", subcategoria:"bebida alcoholica", stock: 2000, precio: 4, pasajeros:null, imagen:"cerveza.PNG"},
+    {id:42, nombre: "Agua", categoria: "servicio-playa", subcategoria:"bebida sin alcohol", stock: 2000, precio: 2, pasajeros:null, imagen:"agua.PNG"},
+    {id:43, nombre: "Caipirinha sin alcohol", categoria: "servicio-playa", subcategoria:"bebida sin alcohol", stock: 2000, precio: 5, pasajeros:null, imagen:"caipirinha.PNG"},
+    {id:44, nombre: "Caipiroska sin alcohol", categoria: "servicio-playa", subcategoria:"bebida sin alcohol", stock: 2000, precio: 5, pasajeros:null , imagen:"caipiroska.jpg"},
+    {id:45, nombre: "Licuado", categoria: "servicio-playa", subcategoria:"bebida sin alcohol", stock: 2000, precio: 3, pasajeros:null , imagen:"licuado.jpg"},
+    {id:46, nombre: "Jugo de frutas", categoria: "servicio-playa", subcategoria:"bebida sin alcohol", stock: 2000, precio: 3, pasajeros:null , imagen:"juegodefrutas.png"},
+    {id:47, nombre: "Gaseosa", categoria: "servicio-playa", subcategoria:"bebida sin alcohol", stock: 2000, precio: 3, pasajeros:null, imagen:"gaseosa.PNG" },
+    {id:48, nombre: "Alquiler de reposera", categoria: "servicio-playa", subcategoria:"bebida sin alcohol", stock: 2000, precio: 2, pasajeros:null, imagen:"reposera.PNG" },
+    {id:49, nombre: "Alquiler de mesa de playa", categoria: "servicio-playa", subcategoria:"bebida sin alcohol", stock: 2000, precio: 2, pasajeros:null , imagen:"mesitadeplaya.PNG" },
+    {id:50, nombre: "Alquiler de sombrilla", categoria: "servicio-playa", subcategoria:"bebida sin alcohol", stock: 2000, precio: 2, pasajeros:null , imagen:"sombrilla.PNG" },
 
 ];
 
@@ -67,9 +67,9 @@ function agregarProductos() {
         const tarjeta = document.createElement('div');
         tarjeta.classList.add('catalogo'); 
 
-        tarjeta.innerHTML = `
-            <img src="./imagenes/${producto.imagen}" alt="${producto.nombre}" class="imagen-producto">
+        tarjeta.innerHTML = `            
             <h3>${producto.nombre}</h3>
+            <img src="./imagenes/${producto.imagen}" alt="${producto.nombre}" class="imagen-producto">
             <p class="precio">$${producto.precio}</p>
             ${producto.pasajeros ? `<p class="pasajeros">Pasajeros: ${producto.pasajeros}</p>` : ""}
             <input type="number" class="cantidad" value="1" min="1" style="width: 60px; margin-bottom: 10px;">
@@ -250,7 +250,7 @@ function mostrarCarrito() {
 // Función para obtener la imagen del producto (si no existe, puedes usar una imagen predeterminada)
 function obtenerImagen(nombre) {
     const producto = productos.find(item => item.nombre === nombre);
-    return producto ? producto.imagen : 'imagen-predeterminada.jpg'; // Si no tiene imagen, usa una predeterminada
+    return producto ? producto.imagen : 'imagen-predeterminada.jpg';
 }
 
 // Asignar el evento para el botón "Ver carrito"

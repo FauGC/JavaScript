@@ -123,33 +123,38 @@
   
 }
 
-.catalogo h3 {
-  font-size: 1.2rem;
-  color: #333;
-  margin-bottom: 10px;
+.catalogo {
+  
+  h3 {
+    font-size: 1.2rem;
+    color: #333;
+    margin-bottom: 10px;
+  }
+
+  .precio {
+    font-size: 1.1rem;
+    color: #333;
+    font-weight: bold;
+    margin-bottom: 10px;
+  }
+
+  .stock {
+    font-size: 1rem;
+    margin: 10px 0;
+  }
+
+  img {
+    width: 200px;
+    height: 180px;
+    border-radius: 10px;
+    margin-bottom: 10px;
+  }
+  
+
 }
 
 
-.catalogo .precio {
-  font-size: 1.1rem;
-  color: #333;
-  font-weight: bold;
-  margin-bottom: 10px;
-}
-
-.catalogo .stock {
-  font-size: 1rem;
-  margin: 10px 0;
-}
-
-
-.catalogo img {
-  width: 100%;
-  height: auto;
-  border-radius: 10px;
-  margin-bottom: 10px;
-}
-
+.catalogo 
 
 .catalogo button {
   font-size: 1rem;
