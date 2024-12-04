@@ -250,7 +250,7 @@ function mostrarCarrito() {
 // Función para obtener la imagen del producto (si no existe, puedes usar una imagen predeterminada)
 function obtenerImagen(nombre) {
     const producto = productos.find(item => item.nombre === nombre);
-    return producto ? producto.imagen : 'imagen-predeterminada.jpg';
+    return producto ? producto.imagen : 'comingsoon.jpeg';
 }
 
 // Asignar el evento para el botón "Ver carrito"
