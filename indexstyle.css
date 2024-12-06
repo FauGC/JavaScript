@@ -259,7 +259,7 @@
   height: 200px;
   text-align: center;
   box-sizing: border-box;
-  margin-bottom: 130px;
+  margin-bottom: 100px;
 }
 .imagen img {
   width: 100%;
@@ -298,9 +298,8 @@
 .contenedor-fechas {
   padding: 20px;
   background: linear-gradient(to bottom, #7d7f01, #d1cd00);
-  margin: 20px;
-  margin-top: 30px; /* Incrementar 10px a la distancia superior */
-  border-radius: 10px;
+  margin-bottom: 5px;
+  width: 100%;
 }
 .contenedor-fechas h2 {
   color: white;
