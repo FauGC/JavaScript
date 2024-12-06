@@ -19,7 +19,7 @@ function mostrarFormularioFechas() {
     const fechaSalida = localStorage.getItem('fechaSalida') || '';
 
     contenedor.innerHTML = `
-        <h2>Por favor, ingresa las fechas de llegada y salida:</h2>
+        <h2>Primero, ingresá las fechas en la viajaras con nosotros:</h2>
         <label for="fecha-llegada">Fecha de Llegada:</label>
         <input type="date" id="fecha-llegada" value="${fechaLlegada}">
         <label for="fecha-salida">Fecha de Salida:</label>
