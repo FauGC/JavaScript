@@ -10,6 +10,55 @@ window.onload = function() {
     mostrarFormularioFechas();
 };
 
+// Función para mostrar el formulario de datos personales
+function mostrarFormularioDatosPersonales() {
+    const contenedor = document.querySelector('.contenedor-datos');
+
+    // Recuperar datos guardados en localStorage, si existen
+    const nombreCompleto = localStorage.getItem('nombreCompleto') || '';
+    const dni = localStorage.getItem('dni') || '';
+    const email = localStorage.getItem('email') || '';
+    const telefono = localStorage.getItem('telefono') || ''; 
+
+    contenedor.innerHTML = `
+        <h2>Por favor, ingresa tus datos personales:</h2>
+        <label for="nombre-completo">Nombre Completo:</label>
+        <input type="text" id="nombre-completo" value="${nombreCompleto}">
+        <label for="dni">DNI:</label>
+        <input type="text" id="dni" value="${dni}">
+        <label for="email">Correo Electrónico:</label>
+        <input type="email" id="email" value="${email}">
+        <label for="telefono">Número de Teléfono (incluyendo país y área):</label>
+        <input type="text" id="telefono" value="${telefono}" placeholder="+54 011 XXXXXXXX">  <!-- Campo para teléfono -->
+        <button id="confirmar-datos">Continuar</button>
+    `;
+
+    // Asignar evento al botón de confirmar datos
+    document.getElementById('confirmar-datos').addEventListener('click', function () {
+        const nombreCompleto = document.getElementById('nombre-completo').value.trim();
+        const dni = document.getElementById('dni').value.trim();
+        const email = document.getElementById('email').value.trim();
+        const telefono = document.getElementById('telefono').value.trim();
+
+        // Validar que todos los campos estén completos
+        if (nombreCompleto && dni && email && telefono) {
+            // Guardar datos en el localStorage
+            localStorage.setItem('nombreCompleto', nombreCompleto);
+            localStorage.setItem('dni', dni);
+            localStorage.setItem('email', email);
+            localStorage.setItem('telefono', telefono); 
+            mostrarFormularioFechas(); 
+        } else {
+            alert("Por favor, completa todos los campos.");
+        }
+    });
+}
+
+// Modificar onload para mostrar primero el formulario de datos personales
+window.onload = function () {
+    mostrarFormularioDatosPersonales();
+};
+
 // Función para mostrar el formulario de fechas
 function mostrarFormularioFechas() {
     const contenedor = document.querySelector('.contenedor-fechas');
@@ -256,11 +305,76 @@ function mostrarCarrito() {
         });
     });
 
+    
+    // Inicializa EmailJS con tu clave pública
+    emailjs.init("jG55NQ5pF4Qie2WvZ"); 
+    
     // Evento para el botón de enviar consulta
     const botonEnviarConsulta = document.querySelector('.btn-enviar-consulta');
     if (botonEnviarConsulta) {
         botonEnviarConsulta.addEventListener('click', function() {
-            // Mostrar mensaje con SweetAlert2 al enviar la consulta
+            // Obtener los datos del usuario del localStorage
+            const nombreCompleto = localStorage.getItem('nombreCompleto') || '';
+            const dni = localStorage.getItem('dni') || '';
+            const emailUsuario = localStorage.getItem('email') || '';
+            const telefono = localStorage.getItem('telefono') || ''; 
+
+            // Obtener las fechas
+            const fechaLlegada = localStorage.getItem('fechaLlegada') || '';
+            const fechaSalida = localStorage.getItem('fechaSalida') || '';
+
+            // Obtener el carrito de productos
+            const carrito = JSON.parse(localStorage.getItem('carrito')) || [];
+            let detallesCarrito = '';
+            let total = 0;
+
+            // Preparar los detalles de los productos
+            carrito.forEach(item => {
+                total += item.precio * item.cantidad;
+                detallesCarrito += `${item.nombre} - $${item.precio} x${item.cantidad}\n`;
+            });
+
+            // Preparar el cuerpo del mensaje
+            const mensaje = `
+                Consulta de Producto:
+                Nombre: ${nombreCompleto}
+                DNI: ${dni}
+                Correo Electrónico: ${emailUsuario}
+                Teléfono: ${telefono}
+                Fechas de viaje:
+                    Llegada: ${fechaLlegada}
+                    Salida: ${fechaSalida}
+                Detalles del carrito:
+                ${detallesCarrito}
+                Total: $${total}
+            `;
+
+            // Mostrar el mensaje en consola o enviarlo a un servicio (aquí solo se muestra en consola)
+            console.log("Mensaje enviado: ", mensaje);
+
+
+            // Enviar el correo al usuario utilizando EmailJS
+            emailjs.init("jG55NQ5pF4Qie2WvZ");
+            emailjs.send('service_dgomyco', 'template_bx1tqtb', {
+                to_email: emailUsuario,
+                subject: 'Detalles de tu Consulta',
+            }).then(function(response) {
+                console.log('Correo enviado al usuario: ', response);
+            }, function(error) {
+                console.log('Error al enviar el correo al usuario: ', error);
+            });
+
+            // Enviar el correo también a través de EmailJS al servicio
+            emailjs.send('service_dgomyco', 'template_bx1tqtb', {
+                to_email: 'lembranzasbr@gmail.com',
+                subject: 'Nueva Consulta Recibida',
+            }).then(function(response) {
+                console.log('Correo enviado al servicio: ', response);
+            }, function(error) {
+                console.log('Error al enviar el correo al servicio: ', error);
+            });
+
+            // Mostrar el mensaje de éxito con SweetAlert2
             Swal.fire({
                 icon: 'success',
                 title: 'Solicitud enviada',
@@ -269,9 +383,5 @@ function mostrarCarrito() {
             });
         });
     }
-}
 
-// Asignar el botón para ver el carrito
-document.getElementById('ver-carrito-btn').addEventListener('click', function() {
-    document.getElementById('carrito-container').classList.toggle('visible');
-});
+}
