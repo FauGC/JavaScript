@@ -8,7 +8,7 @@
 
 .body-index {
   font-family: Arial, sans-serif;
-  background: linear-gradient(to bottom, #e4fcaf, #ffffff);
+  background: linear-gradient(to bottom, #0173ac, #009152);
   width: 100%;
   text-align: center;
   margin: 0;
@@ -17,31 +17,39 @@
 .logo {
   background: radial-gradient(circle, rgb(241, 205, 0), rgb(255, 255, 255));
   width: 100%;
-  height: 280px;
+  height: 400px;
   text-align: center;
 }
 .logo img {
   width: auto;
-  height: 280px;
+  height: 400px;
   object-fit: contain;
 }
 
 .eslogan {
-  background: linear-gradient(to bottom, #7d7f01, #d1cd00);
+  background: linear-gradient(to bottom, #00314a, #005986);
   width: 100%;
   height: 70px;
 }
 .eslogan h1 {
   padding-top: 20px;
   text-align: center;
-  font-size: 2rem;
+  font-size: 1.8rem;
   color: #ffffff;
   font-style: italic;
 }
 
 .titulodecatalogo {
-  background: linear-gradient(to bottom, #7d7f01, #fafc89);
+  background: linear-gradient(to bottom, #015077, #0173ac);
   padding: 10px 0;
+  background: linear-gradient(to bottom, #015077, #0173ac);
+  margin-bottom: 5px;
+  border: 1px solid #ccc;
+  padding: 1rem;
+  margin: 0.5rem;
+  border-radius: 10px;
+  box-sizing: border-box;
+  width: auto;
 }
 .titulodecatalogo h1 {
   text-align: center;
@@ -52,25 +60,35 @@
 }
 
 .catalogos-container {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 100%;
-  padding: 50px 0;
-  gap: 30px;
+  padding: 20px;
+  background: linear-gradient(to bottom, #015077, #0173ac);
+  margin-bottom: 5px;
+  border: 1px solid #ccc;
+  padding: 1rem;
+  margin: 0.5rem;
+  border-radius: 10px;
+  box-sizing: border-box;
+  width: auto;
 }
 
 .categoria {
   display: flex;
   flex-direction: column;
   align-items: center;
-  width: 100%;
   padding-bottom: 50px;
   padding-top: 50px;
   background-color: #fff;
   border-radius: 15px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   margin-bottom: 10px;
+  padding: 20px;
+  margin-bottom: 5px;
+  border: 1px solid #ccc;
+  padding: 1rem;
+  margin: 0.5rem;
+  border-radius: 10px;
+  box-sizing: border-box;
+  width: auto;
 }
 .categoria h2 {
   font-size: 1.5rem;
@@ -101,6 +119,26 @@
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   min-height: 380px;
   margin: 10px 0;
+}
+.catalogo button {
+  flex-direction: column;
+  border: 1px solid #ccc;
+  padding: 0.3rem;
+  margin: 0.5rem;
+  border-radius: 10px;
+  background-color: #15d703;
+  box-sizing: border-box;
+  text-align: center;
+  font-size: 1rem;
+  text-decoration: solid;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+.catalogo button:hover {
+  background-color: #18f105;
+}
+.catalogo button:active {
+  background-color: #0b8000;
 }
 
 .imagen-producto img {
@@ -148,32 +186,38 @@
 
 .ver-carrito {
   background-color: #28a745;
-  color: white;
-  padding: 10px 20px;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-  margin-top: 30px;
-  display: block;
-  width: 200px;
-  margin: 30px auto;
+  padding: 20px;
+  margin-bottom: 5px;
+  border: 1px solid #ccc;
+  padding: 1rem;
+  margin: 0.5rem;
+  border-radius: 10px;
+  box-sizing: border-box;
+  width: auto;
 }
-.ver-carrito:hover {
-  background-color: #218838;
+.ver-carrito h2 {
+  color: white;
+  font-size: 2rem;
+  font-style: italic;
+  text-decoration: underline;
 }
 
 .item-carrito {
   display: flex;
   flex-direction: column;
   align-items: center;
-  border: 1px solid #ccc;
   padding: 1rem;
   margin: 0.5rem;
   border-radius: 10px;
-  background-color: #f9f9f9;
   box-sizing: border-box;
   width: 300px;
   text-align: center;
+  background-color: #aef1a9;
+  padding: 20px;
+  margin-bottom: 5px;
+  border: 1px solid #ccc;
+  padding: 1rem;
+  margin: 0.5rem;
 }
 .item-carrito img {
   width: 100px;
@@ -253,23 +297,8 @@
   background-color: #0056b3;
 }
 
-.imagen {
-  background: radial-gradient(circle, rgb(245, 241, 124), rgb(255, 255, 255));
-  width: 100%;
-  height: 200px;
-  text-align: center;
-  box-sizing: border-box;
-  margin-bottom: 100px;
-}
-.imagen img {
-  width: 100%;
-  height: 300px;
-  padding: 0;
-  display: block;
-}
-
 .footer-index {
-  background: radial-gradient(circle, rgb(245, 241, 124), rgb(255, 255, 255));
+  background: linear-gradient(to bottom, #0173ac, #009152);
   width: 100%;
   height: 200px;
   text-align: center;
@@ -297,15 +326,132 @@
 
 .contenedor-fechas {
   padding: 20px;
-  background: linear-gradient(to bottom, #7d7f01, #d1cd00);
+  background: linear-gradient(to bottom, #015077, #0173ac);
   margin-bottom: 5px;
-  width: 100%;
+  border: 1px solid #ccc;
+  padding: 1rem;
+  margin: 0.5rem;
+  border-radius: 10px;
+  box-sizing: border-box;
+  width: auto;
 }
 .contenedor-fechas h2 {
   color: white;
   margin-bottom: 20px;
   text-decoration: solid;
   text-decoration: underline;
+}
+.contenedor-fechas label {
+  color: white;
+  font-size: 1.5rem;
+  text-decoration: underline;
+  text-align: center;
+  text-decoration: solid;
+  padding-left: 20px;
+}
+.contenedor-fechas button {
+  flex-direction: column;
+  border: 1px solid #ccc;
+  padding: 1rem;
+  margin: 0.5rem;
+  border-radius: 10px;
+  background-color: #15d703;
+  box-sizing: border-box;
+  text-align: center;
+  font-size: 1rem;
+  text-decoration: solid;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+.contenedor-fechas button:hover {
+  background-color: #18f105;
+}
+.contenedor-fechas button:active {
+  background-color: #0b8000;
+}
+
+.contenedor-datos {
+  padding: 20px;
+  background: linear-gradient(to bottom, #015077, #0173ac);
+  margin-bottom: 5px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border: 1px solid #ccc;
+  padding: 1rem;
+  margin: 0.5rem;
+  border-radius: 10px;
+  box-sizing: border-box;
+  width: 70%;
+  text-align: center;
+}
+.contenedor-datos h2 {
+  color: white;
+  font-size: 1.5rem;
+  text-decoration: underline;
+}
+.contenedor-datos h3 {
+  padding-bottom: 3px;
+  padding-top: 3px;
+  color: white;
+  font-size: 1rem;
+  text-decoration: underline;
+}
+.contenedor-datos .datos {
+  display: flex;
+  flex-direction: column;
+  border: 1px solid #ccc;
+  padding: 1rem;
+  margin: 0.5rem;
+  border-radius: 10px;
+  background: linear-gradient(to bottom, #009185, #009185);
+  box-sizing: border-box;
+  width: 600px;
+  text-align: center;
+  height: 200px;
+}
+.contenedor-datos button {
+  display: flex;
+  flex-direction: column;
+  border: 1px solid #ccc;
+  padding: 1rem;
+  margin: 0.5rem;
+  border-radius: 10px;
+  background-color: #15d703;
+  box-sizing: border-box;
+  text-align: center;
+  font-size: 1.5rem;
+  text-decoration: solid;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+.contenedor-datos button:hover {
+  background-color: #18f105;
+}
+.contenedor-datos button:active {
+  background-color: #0b8000;
+}
+
+.imagen img {
+  align-items: right;
+  border: 1px solid #ccc;
+  margin: 0.5rem;
+  border-radius: 10px;
+  background-color: #f9f9f9;
+  box-sizing: border-box;
+  width: 625px;
+}
+
+.cuestionarios {
+  display: flex;
+}
+
+.titulodecatalogo {
+  text-decoration: underline;
+  color: #fffdfd;
+}
+.titulodecatalogo h1 {
+  color: rgb(255, 255, 255);
 }
 
 /*# sourceMappingURL=indexstyle.css.map */

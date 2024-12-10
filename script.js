@@ -21,18 +21,21 @@ function mostrarFormularioDatosPersonales() {
     const telefono = localStorage.getItem('telefono') || ''; 
 
     contenedor.innerHTML = `
-        <h2>Por favor, ingresa tus datos personales:</h2>
-        <label for="nombre-completo">Nombre Completo:</label>
-        <input type="text" id="nombre-completo" value="${nombreCompleto}">
-        <label for="dni">DNI:</label>
-        <input type="text" id="dni" value="${dni}">
-        <label for="email">Correo Electrónico:</label>
-        <input type="email" id="email" value="${email}">
-        <label for="telefono">Número de Teléfono (incluyendo país y área):</label>
-        <input type="text" id="telefono" value="${telefono}" placeholder="+54 011 XXXXXXXX">  <!-- Campo para teléfono -->
-        <button id="confirmar-datos">Continuar</button>
+        <h2>Primero, ingresa tus datos personales:</h2>
+        <div class=datos>
+            <label for="nombre-completo"><h3>Nombre Completo:</h3></label>
+            <input type="text" id="nombre-completo" value="${nombreCompleto}">
+            <label for="dni"><h3>DNI:</h3></label>
+            <input type="text" id="dni" value="${dni}">
+            <label for="email"><h3>Correo Electrónico:</h3></label>
+            <input type="email" id="email" value="${email}">
+            <label for="telefono"><h3>Número de Teléfono (incluyendo país y área):</h3></label>
+            <input type="text" id="telefono" value="${telefono}" placeholder="+XX XXX XXXXXXXX">  <!-- Campo para teléfono -->
+        </div>
+            <button id="confirmar-datos">Continuar</button>
+        
     `;
-
+    
     // Asignar evento al botón de confirmar datos
     document.getElementById('confirmar-datos').addEventListener('click', function () {
         const nombreCompleto = document.getElementById('nombre-completo').value.trim();
@@ -49,7 +52,13 @@ function mostrarFormularioDatosPersonales() {
             localStorage.setItem('telefono', telefono); 
             mostrarFormularioFechas(); 
         } else {
-            alert("Por favor, completa todos los campos.");
+            Swal.fire({
+                icon: 'error',
+                title: 'Error',
+                text: 'Por favor, completa todos los campos.',
+                confirmButtonColor: '#d33',
+                background: '#f8d7da',
+            });
         }
     });
 }
@@ -68,7 +77,7 @@ function mostrarFormularioFechas() {
     const fechaSalida = localStorage.getItem('fechaSalida') || '';
 
     contenedor.innerHTML = `
-        <h2>Primero, ingresá las fechas en la viajaras con nosotros:</h2>
+        <h2>Segundo, ya podes ingresár las fechas en las que viajaras con nosotros:</h2>
         <label for="fecha-llegada">Fecha de Llegada:</label>
         <input type="date" id="fecha-llegada" value="${fechaLlegada}">
         <label for="fecha-salida">Fecha de Salida:</label>
@@ -88,7 +97,13 @@ function mostrarFormularioFechas() {
             localStorage.setItem('fechaSalida', fechaSalida);
             mostrarProductos();
         } else {
-            alert("Por favor, completa ambas fechas.");
+            Swal.fire({
+                icon: 'error',
+                title: 'Error',
+                text: 'Por favor, completa ambas fechas.',
+                confirmButtonColor: '#d33',
+                background: '#f8d7da',
+            });
         }
     });
 }
@@ -102,7 +117,6 @@ function mostrarProductos() {
             localStorage.setItem('productos', JSON.stringify(productos));
             agregarProductos(productos);
         })
-        .catch(error => console.error("Error al cargar los productos:", error));
 }
 
 // Función para agregar los productos al DOM
@@ -112,14 +126,14 @@ function agregarProductos(productos) {
     const contenedorServiciosPlaya = document.querySelector('.productos-servicios-playa');
 
     if (!contenedorHabitaciones || !contenedorServiciosHabitacion || !contenedorServiciosPlaya) {
-        console.error("No se encontraron los contenedores en el HTML");
+        
         return;
     }
 
     productos.forEach(producto => {
         const tarjeta = document.createElement('div');
         tarjeta.classList.add('catalogo');
-
+        
         tarjeta.innerHTML = `
             <h3>${producto.nombre}</h3>
             <img src="./imagenes/${producto.imagen}" alt="${producto.nombre}" class="imagen-producto">
@@ -138,7 +152,7 @@ function agregarProductos(productos) {
         }
     });
 
-    // Asignar eventos de agregar al carrito
+    // Agregar al carrito
     const botonesAgregarCarrito = document.querySelectorAll('.catalogo button');
     botonesAgregarCarrito.forEach((boton) => {
         boton.addEventListener('click', function() {
@@ -152,7 +166,6 @@ function agregarProductos(productos) {
     });
 }
 
-// Función para agregar al carrito
 function agregarAlCarrito(nombre, precio, cantidad) {
     let carrito = JSON.parse(localStorage.getItem('carrito')) || [];
 
@@ -165,7 +178,7 @@ function agregarAlCarrito(nombre, precio, cantidad) {
         carrito.push({ nombre, precio, cantidad });
     }
 
-    // Guardar el carrito actualizado en el localStorage
+    
     localStorage.setItem('carrito', JSON.stringify(carrito));
 
     // Mostrar mensaje en la parte inferior derecha de la pantalla
@@ -240,6 +253,7 @@ function mostrarCarrito() {
     }
 
     let total = 0;
+    let detallesCarrito = ''; // Variable para los detalles del carrito
 
     // Crear un contenedor para los productos del carrito
     const productosCarrito = document.createElement('div');
@@ -247,6 +261,7 @@ function mostrarCarrito() {
 
     carrito.forEach(item => {
         total += item.precio * item.cantidad;
+        detallesCarrito += ` | ${item.nombre} - $${item.precio} x${item.cantidad} |  `; 
 
         const itemCarrito = document.createElement('div');
         itemCarrito.classList.add('item-carrito');
@@ -267,10 +282,10 @@ function mostrarCarrito() {
         productosCarrito.appendChild(itemCarrito);
     });
 
-    // Agregar los productos al carritoContainer
+
     carritoContainer.appendChild(productosCarrito);
 
-    // Crear y agregar el total
+    
     const totalCarrito = document.createElement('div');
     totalCarrito.innerHTML = `
         <div class="total-carrito">
@@ -280,7 +295,7 @@ function mostrarCarrito() {
     `;
     carritoContainer.appendChild(totalCarrito);
 
-    // Asignar eventos para sumar, restar y eliminar productos
+
     const botonesRestar = document.querySelectorAll('.restar');
     botonesRestar.forEach((boton) => {
         boton.addEventListener('click', function() {
@@ -305,7 +320,6 @@ function mostrarCarrito() {
         });
     });
 
-    
     // Inicializa EmailJS con tu clave pública
     emailjs.init("jG55NQ5pF4Qie2WvZ"); 
     
@@ -323,65 +337,28 @@ function mostrarCarrito() {
             const fechaLlegada = localStorage.getItem('fechaLlegada') || '';
             const fechaSalida = localStorage.getItem('fechaSalida') || '';
 
-            // Obtener el carrito de productos
-            const carrito = JSON.parse(localStorage.getItem('carrito')) || [];
-            let detallesCarrito = '';
-            let total = 0;
-
-            // Preparar los detalles de los productos
-            carrito.forEach(item => {
-                total += item.precio * item.cantidad;
-                detallesCarrito += `${item.nombre} - $${item.precio} x${item.cantidad}\n`;
-            });
-
-            // Preparar el cuerpo del mensaje
-            const mensaje = `
-                Consulta de Producto:
-                Nombre: ${nombreCompleto}
-                DNI: ${dni}
-                Correo Electrónico: ${emailUsuario}
-                Teléfono: ${telefono}
-                Fechas de viaje:
-                    Llegada: ${fechaLlegada}
-                    Salida: ${fechaSalida}
-                Detalles del carrito:
-                ${detallesCarrito}
-                Total: $${total}
-            `;
-
-            // Mostrar el mensaje en consola o enviarlo a un servicio (aquí solo se muestra en consola)
-            console.log("Mensaje enviado: ", mensaje);
-
-
-            // Enviar el correo al usuario utilizando EmailJS
-            emailjs.init("jG55NQ5pF4Qie2WvZ");
+            // Enviar el correo de consulta al servicio
             emailjs.send('service_dgomyco', 'template_bx1tqtb', {
-                to_email: emailUsuario,
-                subject: 'Detalles de tu Consulta',
-            }).then(function(response) {
-                console.log('Correo enviado al usuario: ', response);
-            }, function(error) {
-                console.log('Error al enviar el correo al usuario: ', error);
-            });
-
-            // Enviar el correo también a través de EmailJS al servicio
-            emailjs.send('service_dgomyco', 'template_bx1tqtb', {
-                to_email: 'lembranzasbr@gmail.com',
+                to_email: 'lembranzasbr@gmail.com',  
                 subject: 'Nueva Consulta Recibida',
-            }).then(function(response) {
-                console.log('Correo enviado al servicio: ', response);
-            }, function(error) {
-                console.log('Error al enviar el correo al servicio: ', error);
+                nombreCompleto: nombreCompleto, 
+                dni: dni,                    
+                emailUsuario: emailUsuario,  
+                telefono: telefono,          
+                fechaLlegada: fechaLlegada,  
+                fechaSalida: fechaSalida,    
+                detallesCarrito: detallesCarrito,  
+                total: total                 
+            
             });
 
-            // Mostrar el mensaje de éxito con SweetAlert2
+            
             Swal.fire({
                 icon: 'success',
                 title: 'Solicitud enviada',
-                text: 'Nos estaremos poniendo en contacto contigo en la brevedad. Nos vemos Pronto!',
+                text: 'Nos estaremos poniendo en contacto contigo en la brevedad. ¡Nos vemos pronto!',
                 confirmButtonText: '¡Gracias!'
             });
         });
     }
-
 }
