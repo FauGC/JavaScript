@@ -268,48 +268,37 @@ tarjetaImagen.appendChild(botones);
 
 function agregarAlCarrito(nombre, precio, cantidad) {
     let carrito = JSON.parse(localStorage.getItem('carrito')) || [];
-
     // Verificar si el producto ya está en el carrito
     const productoExistente = carrito.find(item => item.nombre === nombre);
-
     if (productoExistente) {
-        productoExistente.cantidad += cantidad; 
+        productoExistente.cantidad += cantidad;
     } else {
-        const categoria = producto ? producto.categoria : '';
-        carrito.push({ nombre, precio, cantidad, categoria });
+        carrito.push({ nombre, precio, cantidad });
     }
-
-    
+   
     localStorage.setItem('carrito', JSON.stringify(carrito));
-
-
     const mensaje = document.createElement('div');
     mensaje.classList.add('mensaje-carrito');
     mensaje.innerHTML = `${nombre} agregado al carrito`;
-
-    
+   
     document.body.appendChild(mensaje);
     setTimeout(() => {
         mensaje.remove();
     }, 1000);
-
-    
+   
     mostrarCarrito();
 }
 
 // Función para restar un ítem del carrito
 function restarProducto(nombre) {
     let carrito = JSON.parse(localStorage.getItem('carrito')) || [];
-
     const producto = carrito.find(item => item.nombre === nombre);
     if (producto && producto.cantidad > 1) {
         producto.cantidad -= 1;
     } else {
         carrito = carrito.filter(item => item.nombre !== nombre);
     }
-
     localStorage.setItem('carrito', JSON.stringify(carrito));
-
     // Actualizar la visualización del carrito
     mostrarCarrito();
 }
@@ -317,14 +306,11 @@ function restarProducto(nombre) {
 // Función para sumar un ítem del carrito
 function sumarProducto(nombre) {
     let carrito = JSON.parse(localStorage.getItem('carrito')) || [];
-
     const producto = carrito.find(item => item.nombre === nombre);
     if (producto) {
         producto.cantidad += 1; // Aumentar la cantidad
     }
-
     localStorage.setItem('carrito', JSON.stringify(carrito));
-
     // Actualizar la visualización del carrito
     mostrarCarrito();
 }
@@ -332,12 +318,9 @@ function sumarProducto(nombre) {
 // Función para eliminar un producto del carrito
 function eliminarProducto(nombre) {
     let carrito = JSON.parse(localStorage.getItem('carrito')) || [];
-
     // Eliminar el producto del carrito
     carrito = carrito.filter(item => item.nombre !== nombre);
-
     localStorage.setItem('carrito', JSON.stringify(carrito));
-
     // Actualizar la visualización del carrito
     mostrarCarrito();
 }
@@ -346,24 +329,19 @@ function eliminarProducto(nombre) {
 function mostrarCarrito() {
     const carrito = JSON.parse(localStorage.getItem('carrito')) || [];
     const carritoContainer = document.getElementById('carrito-container');
-    carritoContainer.innerHTML = ''; 
-
+    carritoContainer.innerHTML = '';
     if (carrito.length === 0) {
         carritoContainer.innerHTML = "<p>Tu carrito está vacío.</p>";
         return;
     }
-
     let total = 0;
-    let detallesCarrito = ''; 
-
+    let detallesCarrito = '';
     // Crear un contenedor para los productos del carrito
     const productosCarrito = document.createElement('div');
     productosCarrito.classList.add('productos-carrito');
-
     carrito.forEach(item => {
         total += item.precio * item.cantidad;
-        detallesCarrito += ` | ${item.nombre} - $${item.precio} x${item.cantidad} x |  `; 
-
+        detallesCarrito += ` | ${item.nombre} - $${item.precio} x${item.cantidad} x |  `;
         const itemCarrito = document.createElement('div');
         itemCarrito.classList.add('item-carrito');
         itemCarrito.innerHTML = `
@@ -379,12 +357,43 @@ function mostrarCarrito() {
                 </div>
             </div>
         `;
-
         productosCarrito.appendChild(itemCarrito);
     });
-
-
     carritoContainer.appendChild(productosCarrito);
+
+    // Agregar eventos a los botones de sumar, restar y eliminar
+    const botonesRestar = document.querySelectorAll('.restar');
+    botonesRestar.forEach((boton) => {
+        boton.addEventListener('click', function() {
+            const nombreProducto = this.dataset.nombre;
+            restarProducto(nombreProducto);
+        });
+    });
+
+    const botonesSumar = document.querySelectorAll('.sumar');
+    botonesSumar.forEach((boton) => {
+        boton.addEventListener('click', function() {
+            const nombreProducto = this.dataset.nombre;
+            sumarProducto(nombreProducto);
+        });
+    });
+
+    const botonesEliminar = document.querySelectorAll('.eliminar');
+    botonesEliminar.forEach((boton) => {
+        boton.addEventListener('click', function() {
+            const nombreProducto = this.dataset.nombre;
+            eliminarProducto(nombreProducto);
+        });
+    });
+}
+
+// Función para obtener la imagen del producto (si no existe, puedes usar una imagen predeterminada)
+function obtenerImagen(nombre) {
+    const productos = JSON.parse(localStorage.getItem('productos')) || [];  
+    const producto = productos.find(item => item.nombre === nombre);
+    return producto ? producto.imagenes[0] : 'comingsoon.jpeg';
+
+
 
     
     const totalCarrito = document.createElement('div');
