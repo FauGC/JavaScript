@@ -1,8 +1,8 @@
 // Función para obtener la imagen del producto (si no existe, puedes usar una imagen predeterminada)
 function obtenerImagen(nombre) {
-    const productos = JSON.parse(localStorage.getItem('productos')) || [];  // Definir productos globalmente
+    const productos = JSON.parse(localStorage.getItem('productos')) || [];  
     const producto = productos.find(item => item.nombre === nombre);
-    return producto ? producto.imagen : 'comingsoon.jpeg';
+    return producto ? producto.imagenes[0] : 'comingsoon.jpeg';
 }
 
 // Cargar los productos al cargar la página
@@ -90,12 +90,28 @@ function mostrarFormularioFechas() {
         const fechaLlegada = document.getElementById('fecha-llegada').value;
         const fechaSalida = document.getElementById('fecha-salida').value;
 
-        // Verificar que ambas fechas sean seleccionadas
-        if (fechaLlegada && fechaSalida) {
+         // Verificar que ambas fechas sean seleccionadas
+            if (fechaLlegada && fechaSalida) {
             // Guardar fechas en el localStorage
             localStorage.setItem('fechaLlegada', fechaLlegada);
             localStorage.setItem('fechaSalida', fechaSalida);
-            mostrarProductos();
+
+            // Calcular la cantidad de días entre las fechas
+            const fechaLlegadaObj = new Date(fechaLlegada);
+            const fechaSalidaObj = new Date(fechaSalida);
+
+            // Restar un día a la fecha de salida para evitar contar el día de salida
+            fechaSalidaObj.setDate(fechaSalidaObj.getDate() - 1);
+
+            // Calcular la diferencia en días
+            const diasTotales = Math.floor((fechaSalidaObj - fechaLlegadaObj) / (1000 * 60 * 60 * 24));
+
+            // Guardar diasTotales en localStorage
+            localStorage.setItem('diasTotales', diasTotales);
+            
+
+            // Llamar a la función que muestra los productos (puedes agregarla o personalizarla según sea necesario)
+            mostrarProductos(diasTotales);
         } else {
             Swal.fire({
                 icon: 'error',
@@ -126,7 +142,6 @@ function agregarProductos(productos) {
     const contenedorServiciosPlaya = document.querySelector('.productos-servicios-playa');
 
     if (!contenedorHabitaciones || !contenedorServiciosHabitacion || !contenedorServiciosPlaya) {
-        
         return;
     }
 
@@ -136,13 +151,13 @@ function agregarProductos(productos) {
         
         tarjeta.innerHTML = `
             <h3>${producto.nombre}</h3>
-            <img src="./imagenes/${producto.imagen}" alt="${producto.nombre}" class="imagen-producto">
-            <p class="precio">$${producto.precio}</p>
-            ${producto.pasajeros ? `<p class="pasajeros">Pasajeros: ${producto.pasajeros}</p>` : ""}
-            <input type="number" class="cantidad" value="1" min="1" style="width: 60px; margin-bottom: 10px;">
-            <button>Agregar al Carrito</button>
+            <img src="./imagenes/${producto.imagenes[0]}" alt="${producto.nombre}" class="imagen-producto" data-imagenes='${JSON.stringify(producto.imagenes)}'>
+            <p class="precio">USD$${producto.precio} por día</p>
+            ${producto.pasajeros ? `<p class="pasajeros">Pasajeros: ${producto.pasajeros}</p>` : ""}            
+            <button>Agregar al Carrito</button> <input type="number" class="cantidad" value="1" min="1" style="width: 60px; margin-bottom: 10px;">
         `;
 
+        // Agregar la tarjeta al contenedor según la categoría
         if (producto.categoria === "habitaciones") {
             contenedorHabitaciones.appendChild(tarjeta);
         } else if (producto.categoria === "servicio-habitacion") {
@@ -150,6 +165,13 @@ function agregarProductos(productos) {
         } else if (producto.categoria === "servicio-playa") {
             contenedorServiciosPlaya.appendChild(tarjeta);
         }
+
+        // Añadir evento a la imagen para abrir la galería
+        const imagenProducto = tarjeta.querySelector('.imagen-producto');
+        imagenProducto.addEventListener('click', function() {
+            const imagenes = JSON.parse(imagenProducto.getAttribute('data-imagenes'));
+            mostrarGaleria(imagenes);
+        });
     });
 
     // Agregar al carrito
@@ -158,13 +180,91 @@ function agregarProductos(productos) {
         boton.addEventListener('click', function() {
             const tarjeta = this.closest('.catalogo');
             const nombre = tarjeta.querySelector('h3').innerText;
-            const precio = parseFloat(tarjeta.querySelector('.precio').innerText.replace('$', ''));
+            const precio = parseFloat(tarjeta.querySelector('.precio').innerText.replace('USD$', ''));
             const cantidad = parseInt(tarjeta.querySelector('.cantidad').value);
 
             agregarAlCarrito(nombre, precio, cantidad);
         });
     });
 }
+
+
+function mostrarGaleria(imagenes) {
+
+    const galeria = document.createElement('div');
+    galeria.classList.add('galeria-imagenes');
+
+    
+    const tarjetaImagen = document.createElement('div');
+    tarjetaImagen.classList.add('tarjeta-imagen'); // Este es el contenedor de la tarjeta
+    galeria.appendChild(tarjetaImagen);
+
+    // Crear la imagen que se va a mostrar
+    const imagenElemento = document.createElement('img');
+    imagenElemento.src = `./imagenes/${imagenes[0]}`;
+    imagenElemento.alt = "Imagen del producto";
+    imagenElemento.classList.add('imagen-galeria');
+    tarjetaImagen.appendChild(imagenElemento);
+
+
+const botones = document.createElement('div');
+botones.classList.add('botones-galeria');
+
+
+const cerrarGaleria = document.createElement('button');
+cerrarGaleria.innerText = 'Cerrar';
+cerrarGaleria.classList.add('cerrar-galeria');
+cerrarGaleria.addEventListener('click', function() {
+    galeria.remove();
+});
+botones.appendChild(cerrarGaleria);
+
+
+const anteriorBtn = document.createElement('button');
+anteriorBtn.innerText = 'Anterior';
+anteriorBtn.classList.add('anterior');
+botones.appendChild(anteriorBtn);
+
+const siguienteBtn = document.createElement('button');
+siguienteBtn.innerText = 'Siguiente';
+siguienteBtn.classList.add('siguiente');
+botones.appendChild(siguienteBtn);
+
+
+
+tarjetaImagen.appendChild(botones); 
+
+
+
+    let indiceImagen = 0;
+
+    
+    function actualizarImagen() {
+        imagenElemento.src = `./imagenes/${imagenes[indiceImagen]}`;
+    }
+
+    
+    siguienteBtn.addEventListener('click', function() {
+        if (indiceImagen < imagenes.length - 1) {
+            indiceImagen++;
+        } else {
+            indiceImagen = 0; 
+        }
+        actualizarImagen();
+    });
+
+    anteriorBtn.addEventListener('click', function() {
+        if (indiceImagen > 0) {
+            indiceImagen--;
+        } else {
+            indiceImagen = imagenes.length - 1; 
+        }
+        actualizarImagen();
+    });
+
+    document.body.appendChild(galeria);
+}
+
 
 function agregarAlCarrito(nombre, precio, cantidad) {
     let carrito = JSON.parse(localStorage.getItem('carrito')) || [];
@@ -175,24 +275,25 @@ function agregarAlCarrito(nombre, precio, cantidad) {
     if (productoExistente) {
         productoExistente.cantidad += cantidad; 
     } else {
-        carrito.push({ nombre, precio, cantidad });
+        const categoria = producto ? producto.categoria : '';
+        carrito.push({ nombre, precio, cantidad, categoria });
     }
 
     
     localStorage.setItem('carrito', JSON.stringify(carrito));
 
-    // Mostrar mensaje en la parte inferior derecha de la pantalla
+
     const mensaje = document.createElement('div');
     mensaje.classList.add('mensaje-carrito');
     mensaje.innerHTML = `${nombre} agregado al carrito`;
 
-    // Agregar el mensaje al body y luego eliminarlo después de 0.7 segundos
+    
     document.body.appendChild(mensaje);
     setTimeout(() => {
         mensaje.remove();
     }, 1000);
 
-    // Actualizar la visualización del carrito
+    
     mostrarCarrito();
 }
 
@@ -245,7 +346,7 @@ function eliminarProducto(nombre) {
 function mostrarCarrito() {
     const carrito = JSON.parse(localStorage.getItem('carrito')) || [];
     const carritoContainer = document.getElementById('carrito-container');
-    carritoContainer.innerHTML = ''; // Limpiar carrito previo
+    carritoContainer.innerHTML = ''; 
 
     if (carrito.length === 0) {
         carritoContainer.innerHTML = "<p>Tu carrito está vacío.</p>";
@@ -253,7 +354,7 @@ function mostrarCarrito() {
     }
 
     let total = 0;
-    let detallesCarrito = ''; // Variable para los detalles del carrito
+    let detallesCarrito = ''; 
 
     // Crear un contenedor para los productos del carrito
     const productosCarrito = document.createElement('div');
@@ -261,7 +362,7 @@ function mostrarCarrito() {
 
     carrito.forEach(item => {
         total += item.precio * item.cantidad;
-        detallesCarrito += ` | ${item.nombre} - $${item.precio} x${item.cantidad} |  `; 
+        detallesCarrito += ` | ${item.nombre} - $${item.precio} x${item.cantidad} x |  `; 
 
         const itemCarrito = document.createElement('div');
         itemCarrito.classList.add('item-carrito');
@@ -327,17 +428,17 @@ function mostrarCarrito() {
     const botonEnviarConsulta = document.querySelector('.btn-enviar-consulta');
     if (botonEnviarConsulta) {
         botonEnviarConsulta.addEventListener('click', function() {
-            // Obtener los datos del usuario del localStorage
+        
             const nombreCompleto = localStorage.getItem('nombreCompleto') || '';
             const dni = localStorage.getItem('dni') || '';
             const emailUsuario = localStorage.getItem('email') || '';
             const telefono = localStorage.getItem('telefono') || ''; 
 
-            // Obtener las fechas
+            
             const fechaLlegada = localStorage.getItem('fechaLlegada') || '';
             const fechaSalida = localStorage.getItem('fechaSalida') || '';
 
-            // Enviar el correo de consulta al servicio
+            
             emailjs.send('service_dgomyco', 'template_bx1tqtb', {
                 to_email: 'lembranzasbr@gmail.com',  
                 subject: 'Nueva Consulta Recibida',
@@ -362,3 +463,5 @@ function mostrarCarrito() {
         });
     }
 }
+
+

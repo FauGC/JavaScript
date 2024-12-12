@@ -1,502 +1,97 @@
 [
     {
         "id": 1,
-        "nombre": "Habitación grand",
+        "nombre": "STANDARD LATERAL",
         "categoria": "habitaciones",
         "subcategoria": "habitaciones",
         "stock": 10,
-        "precio": 160,
-        "pasajeros": 6,
-        "imagen": "grand.jpg"
+        "precio": "Consultar",
+        "pasajeros": 2,
+        "imagenes": [
+            "habiacionesSTANDARDLATERAL1.jpg",
+            "habiacionesSTANDARDLATERAL2.jpg",
+            "habiacionesSTANDARDLATERAL3.jpg",
+            "habiacionesSTANDARDLATERAL4.jpg"            
+        ]
     },
     {
         "id": 2,
-        "nombre": "Habitación quintuple",
+        "nombre": "STANDARD FRENTE A LA CALLE",
         "categoria": "habitaciones",
         "subcategoria": "habitaciones",
         "stock": 10,
-        "precio": 140,
-        "pasajeros": 5,
-        "imagen": "quintuple.jpg"
+        "precio": "Consultar",
+        "pasajeros": 4,
+        "imagenes": [
+            "habitacionSTANDARDFRENTECALLE1.jpg",
+            "habitacionSTANDARDFRENTECALLE2.jpg",
+            "habitacionSTANDARDFRENTECALLE3.jpg",
+            "habitacionSTANDARDFRENTECALLE4.jpg",
+            "habitacionSTANDARDFRENTECALLE5.jpg",
+            "habitacionSTANDARDFRENTECALLE6.jpg"            
+        ]
     },
     {
         "id": 3,
-        "nombre": "Habitación cuadruple",
+        "nombre": "STANDARD FRENTE AL MAR ",
         "categoria": "habitaciones",
         "subcategoria": "habitaciones",
         "stock": 10,
-        "precio": 120,
-        "pasajeros": 4,
-        "imagen": "cuadruple.jpg"
+        "precio": "Consultar",
+        "pasajeros": 6,
+        "imagenes": [
+            "habitacionSTANDARDFRENTEMAR1.jpg",
+            "habitacionSTANDARDFRENTEMAR2.jpg",
+            "habitacionSTANDARDFRENTEMAR3.jpg",
+            "habitacionSTANDARDFRENTEMAR4.jpg",
+            "habitacionSTANDARDFRENTEMAR5.jpg",
+            "habitacionSTANDARDFRENTEMAR6.jpg",
+            "habitacionSTANDARDFRENTEMAR7.jpg"            
+        ]
     },
     {
         "id": 4,
-        "nombre": "Habitación triple",
+        "nombre": "SUPERIOR FRENTE A LA CALLE ",
         "categoria": "habitaciones",
         "subcategoria": "habitaciones",
         "stock": 10,
-        "precio": 100,
-        "pasajeros": 3,
-        "imagen": "triple.jpg"
+        "precio": "Consultar",
+        "pasajeros": 7,
+        "imagenes": [
+            "habitacionSUPERIORFRENTECALLE1.jpg",
+            "habitacionSUPERIORFRENTECALLE2.jpg",
+            "habitacionSUPERIORFRENTECALLE3.jpg",
+            "habitacionSUPERIORFRENTECALLE4.jpg",
+            "habitacionSUPERIORFRENTECALLE5.jpg",
+            "habitacionSUPERIORFRENTECALLE6.jpg",
+            "habitacionSUPERIORFRENTECALLE7.jpg"            
+        ]
     },
     {
         "id": 5,
-        "nombre": "Habitación doble",
+        "nombre": "PENTHOUSE",
         "categoria": "habitaciones",
         "subcategoria": "habitaciones",
         "stock": 10,
-        "precio": 80,
-        "pasajeros": 2,
-        "imagen": "doble.jpg"
-    },
-    {
-        "id": 6,
-        "nombre": "Café",
-        "categoria": "servicio-habitacion",
-        "subcategoria": "bebida - infusión",
-        "stock": 1000,
-        "precio": 4,
-        "pasajeros": null,
-        "imagen": "cafe.jpg"
-    },
-    {
-        "id": 7,
-        "nombre": "Té",
-        "categoria": "servicio-habitacion",
-        "subcategoria": "bebida - infusión",
-        "stock": 1000,
-        "precio": 4,
-        "pasajeros": null,
-        "imagen": "te.jpeg"
-    },
-    {
-        "id": 8,
-        "nombre": "Mate cocido",
-        "categoria": "servicio-habitacion",
-        "subcategoria": "bebida - infusión",
-        "stock": 1000,
-        "precio": 3,
-        "pasajeros": null,
-        "imagen": "matecocido.jpg"
-    },
-    {
-        "id": 9,
-        "nombre": "Medialunas",
-        "categoria": "servicio-habitacion",
-        "subcategoria": "alimento - panificado",
-        "stock": 2000,
-        "precio": 2,
-        "pasajeros": null,
-        "imagen": "medialunas.jpg"
-    },
-    {
-        "id": 10,
-        "nombre": "Tostadas",
-        "categoria": "servicio-habitacion",
-        "subcategoria": "alimento - panificado",
-        "stock": 2000,
-        "precio": 2,
-        "pasajeros": null,
-        "imagen": "tostadas.jpg"
-    },
-    {
-        "id": 11,
-        "nombre": "Milanesas",
-        "categoria": "servicio-habitacion",
-        "subcategoria": "alimento - carne",
-        "stock": 2000,
-        "precio": 5,
-        "pasajeros": null,
-        "imagen": "milanesas.png"
-    },
-    {
-        "id": 12,
-        "nombre": "Asado de banderitas",
-        "categoria": "servicio-habitacion",
-        "subcategoria": "alimento - carne",
-        "stock": 2000,
-        "precio": 8,
-        "pasajeros": null,
-        "imagen": "asadobanderita.PNG"
-    },
-    {
-        "id": 13,
-        "nombre": "Pure",
-        "categoria": "servicio-habitacion",
-        "subcategoria": "alimento - guarnición",
-        "stock": 2000,
-        "precio": 4,
-        "pasajeros": null,
-        "imagen": "pure.jpg"
-    },
-    {
-        "id": 14,
-        "nombre": "Ensalada",
-        "categoria": "servicio-habitacion",
-        "subcategoria": "alimento - guarnición",
-        "stock": 2000,
-        "precio": 4,
-        "pasajeros": null,
-        "imagen": "ensalada.jpg"
-    },
-    {
-        "id": 15,
-        "nombre": "Papas fritas",
-        "categoria": "servicio-habitacion",
-        "subcategoria": "alimento - guarnición",
-        "stock": 2000,
-        "precio": 2,
-        "pasajeros": null,
-        "imagen": "papasfritas.jpg"
-    },
-    {
-        "id": 16,
-        "nombre": "Caipirinha",
-        "categoria": "servicio-habitacion",
-        "subcategoria": "bebida alcoholica",
-        "stock": 1000,
-        "precio": 5,
-        "pasajeros": null,
-        "imagen": "caipirinha.PNG"
-    },
-    {
-        "id": 17,
-        "nombre": "Caipiroska",
-        "categoria": "servicio-habitacion",
-        "subcategoria": "bebida alcoholica",
-        "stock": 1000,
-        "precio": 5,
-        "pasajeros": null,
-        "imagen": "caipiroska.jpg"
-    },
-    {
-        "id": 18,
-        "nombre": "Fernet-cola",
-        "categoria": "servicio-habitacion",
-        "subcategoria": "bebida alcoholica",
-        "stock": 1000,
-        "precio": 5,
-        "pasajeros": null,
-        "imagen": "fernetcola.png"
-    },
-    {
-        "id": 19,
-        "nombre": "Gancia-limón",
-        "categoria": "servicio-habitacion",
-        "subcategoria": "bebida alcoholica",
-        "stock": 1000,
-        "precio": 5,
-        "pasajeros": null,
-        "imagen": "gancia-limon.jpg"
-    },
-    {
-        "id": 20,
-        "nombre": "Cerveza",
-        "categoria": "servicio-habitacion",
-        "subcategoria": "bebida alcoholica",
-        "stock": 2000,
-        "precio": 3,
-        "pasajeros": null,
-        "imagen": "cerveza.PNG"
-    },
-    {
-        "id": 21,
-        "nombre": "Agua",
-        "categoria": "servicio-habitacion",
-        "subcategoria": "bebida sin alcohol",
-        "stock": 2000,
-        "precio": 1,
-        "pasajeros": null,
-        "imagen": "agua.PNG"
-    },
-    {
-        "id": 22,
-        "nombre": "Caipirinha sin alcohol",
-        "categoria": "servicio-habitacion",
-        "subcategoria": "bebida sin alcohol",
-        "stock": 2000,
-        "precio": 4,
-        "pasajeros": null,
-        "imagen": "caipirinha.PNG"
-    },
-    {
-        "id": 23,
-        "nombre": "Caipiroska sin alcohol",
-        "categoria": "servicio-habitacion",
-        "subcategoria": "bebida sin alcohol",
-        "stock": 2000,
-        "precio": 4,
-        "pasajeros": null,
-        "imagen": "caipiroska.jpg"
-    },
-    {
-        "id": 24,
-        "nombre": "Licuado",
-        "categoria": "servicio-habitacion",
-        "subcategoria": "bebida sin alcohol",
-        "stock": 2000,
-        "precio": 2,
-        "pasajeros": null,
-        "imagen": "licuado.jpg"
-    },
-    {
-        "id": 25,
-        "nombre": "Jugo de frutas",
-        "categoria": "servicio-habitacion",
-        "subcategoria": "bebida sin alcohol",
-        "stock": 2000,
-        "precio": 2,
-        "pasajeros": null,
-        "imagen": "juegodefrutas.jpg"
-    },
-    {
-        "id": 26,
-        "nombre": "Gaseosa",
-        "categoria": "servicio-habitacion",
-        "subcategoria": "bebida sin alcohol",
-        "stock": 2000,
-        "precio": 2,
-        "pasajeros": null,
-        "imagen": "gaseosa.PNG"
-    },
-    {
-        "id": 27,
-        "nombre": "Café",
-        "categoria": "servicio-playa",
-        "subcategoria": "bebida - infusión",
-        "stock": 1000,
-        "precio": 5,
-        "pasajeros": null,
-        "imagen": "cafe.jpg"
-    },
-    {
-        "id": 28,
-        "nombre": "Té",
-        "categoria": "servicio-playa",
-        "subcategoria": "bebida - infusión",
-        "stock": 1000,
-        "precio": 5,
-        "pasajeros": null,
-        "imagen": "te.jpeg"
-    },
-    {
-        "id": 29,
-        "nombre": "Mate cocido",
-        "categoria": "servicio-playa",
-        "subcategoria": "bebida - infusión",
-        "stock": 1000,
-        "precio": 4,
-        "pasajeros": null,
-        "imagen": "matecocido.jpg"
-    },
-    {
-        "id": 30,
-        "nombre": "Medialunas",
-        "categoria": "servicio-playa",
-        "subcategoria": "alimento - panificado",
-        "stock": 2000,
-        "precio": 3,
-        "pasajeros": null,
-        "imagen": "medialunas.jpg"
-    },
-    {
-        "id": 31,
-        "nombre": "Tostadas",
-        "categoria": "servicio-playa",
-        "subcategoria": "alimento - panificado",
-        "stock": 2000,
-        "precio": 3,
-        "pasajeros": null,
-        "imagen": "tostadas.jpg"
-    },
-    {
-        "id": 32,
-        "nombre": "Milanesas",
-        "categoria": "servicio-playa",
-        "subcategoria": "alimento - carne",
-        "stock": 2000,
-        "precio": 6,
-        "pasajeros": null,
-        "imagen": "milanesas.png"
-    },
-    {
-        "id": 33,
-        "nombre": "Asado de banderitas",
-        "categoria": "servicio-playa",
-        "subcategoria": "alimento - carne",
-        "stock": 2000,
-        "precio": 8,
-        "pasajeros": null,
-        "imagen": "asadobanderita.PNG"
-    },
-    {
-        "id": 34,
-        "nombre": "Pure",
-        "categoria": "servicio-playa",
-        "subcategoria": "alimento - guarnición",
-        "stock": 2000,
-        "precio": 5,
-        "pasajeros": null,
-        "imagen": "pure.jpg"
-    },
-    {
-        "id": 35,
-        "nombre": "Ensalada",
-        "categoria": "servicio-playa",
-        "subcategoria": "alimento - guarnición",
-        "stock": 2000,
-        "precio": 5,
-        "pasajeros": null,
-        "imagen": "ensalada.jpg"
-    },
-    {
-        "id": 36,
-        "nombre": "Papas fritas",
-        "categoria": "servicio-playa",
-        "subcategoria": "alimento - guarnición",
-        "stock": 2000,
-        "precio": 3,
-        "pasajeros": null,
-        "imagen": "papasfritas.jpg"
-    },
-    {
-        "id": 37,
-        "nombre": "Caipirinha",
-        "categoria": "servicio-playa",
-        "subcategoria": "bebida alcoholica",
-        "stock": 1000,
-        "precio": 6,
-        "pasajeros": null,
-        "imagen": "caipirinha.PNG"
-    },
-    {
-        "id": 38,
-        "nombre": "Caipiroska",
-        "categoria": "servicio-playa",
-        "subcategoria": "bebida alcoholica",
-        "stock": 1000,
-        "precio": 6,
-        "pasajeros": null,
-        "imagen": "caipiroska.jpg"
-    },
-    {
-        "id": 39,
-        "nombre": "Fernet-cola",
-        "categoria": "servicio-playa",
-        "subcategoria": "bebida alcoholica",
-        "stock": 1000,
-        "precio": 6,
-        "pasajeros": null,
-        "imagen": "fernetcola.png"
-    },
-    {
-        "id": 40,
-        "nombre": "Gancia-limón",
-        "categoria": "servicio-playa",
-        "subcategoria": "bebida alcoholica",
-        "stock": 1000,
-        "precio": 6,
-        "pasajeros": null,
-        "imagen": "gancia-limon.jpg"
-    },
-    {
-        "id": 41,
-        "nombre": "Cerveza",
-        "categoria": "servicio-playa",
-        "subcategoria": "bebida alcoholica",
-        "stock": 2000,
-        "precio": 4,
-        "pasajeros": null,
-        "imagen": "cerveza.PNG"
-    },
-    {
-        "id": 42,
-        "nombre": "Agua",
-        "categoria": "servicio-playa",
-        "subcategoria": "bebida sin alcohol",
-        "stock": 2000,
-        "precio": 2,
-        "pasajeros": null,
-        "imagen": "agua.PNG"
-    },
-    {
-        "id": 43,
-        "nombre": "Caipirinha sin alcohol",
-        "categoria": "servicio-playa",
-        "subcategoria": "bebida sin alcohol",
-        "stock": 2000,
-        "precio": 5,
-        "pasajeros": null,
-        "imagen": "caipirinha.PNG"
-    },
-    {
-        "id": 44,
-        "nombre": "Caipiroska sin alcohol",
-        "categoria": "servicio-playa",
-        "subcategoria": "bebida sin alcohol",
-        "stock": 2000,
-        "precio": 5,
-        "pasajeros": null,
-        "imagen": "caipiroska.jpg"
-    },
-    {
-        "id": 45,
-        "nombre": "Licuado",
-        "categoria": "servicio-playa",
-        "subcategoria": "bebida sin alcohol",
-        "stock": 2000,
-        "precio": 3,
-        "pasajeros": null,
-        "imagen": "licuado.jpg"
-    },
-    {
-        "id": 46,
-        "nombre": "Jugo de frutas",
-        "categoria": "servicio-playa",
-        "subcategoria": "bebida sin alcohol",
-        "stock": 2000,
-        "precio": 3,
-        "pasajeros": null,
-        "imagen": "juegodefrutas.jpg"
-    },
-    {
-        "id": 47,
-        "nombre": "Gaseosa",
-        "categoria": "servicio-playa",
-        "subcategoria": "bebida sin alcohol",
-        "stock": 2000,
-        "precio": 3,
-        "pasajeros": null,
-        "imagen": "gaseosa.PNG"
-    },
-    {
-        "id": 48,
-        "nombre": "Alquiler de reposera",
-        "categoria": "servicio-playa",
-        "subcategoria": "bebida sin alcohol",
-        "stock": 2000,
-        "precio": 2,
-        "pasajeros": null,
-        "imagen": "reposera.PNG"
-    },
-    {
-        "id": 49,
-        "nombre": "Alquiler de mesa de playa",
-        "categoria": "servicio-playa",
-        "subcategoria": "bebida sin alcohol",
-        "stock": 2000,
-        "precio": 2,
-        "pasajeros": null,
-        "imagen": "mesitadeplaya.PNG"
-    },
-    {
-        "id": 50,
-        "nombre": "Alquiler de sombrilla",
-        "categoria": "servicio-playa",
-        "subcategoria": "bebida sin alcohol",
-        "stock": 2000,
-        "precio": 2,
-        "pasajeros": null,
-        "imagen": "sombrilla.PNG"
+        "precio": 50,
+        "pasajeros": 9,
+        "imagenes": [
+            "habiacionesPENTHOUSE1.jpg",
+            "habiacionesPENTHOUSE2.jpg",
+            "habiacionesPENTHOUSE3.jpg",
+            "habiacionesPENTHOUSE4.jpg",
+            "habiacionesPENTHOUSE5.jpg",
+            "habiacionesPENTHOUSE6.jpg",
+            "habiacionesPENTHOUSE7.jpg",
+            "habiacionesPENTHOUSE8.jpg",
+            "habiacionesPENTHOUSE9.jpg",
+            "habiacionesPENTHOUSE10.jpg",
+            "habiacionesPENTHOUSE11.jpg",
+            "habiacionesPENTHOUSE12.jpg",
+            "habiacionesPENTHOUSE13.jpg",
+            "habiacionesPENTHOUSE14.jpg",
+            "habiacionesPENTHOUSE15.jpg",
+            "habiacionesPENTHOUSE16.jpg"            
+        ]
     }
 ]
