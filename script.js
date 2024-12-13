@@ -1,20 +1,19 @@
-// Función para obtener la imagen del producto (si no existe, puedes usar una imagen predeterminada)
+
 function obtenerImagen(nombre) {
     const productos = JSON.parse(localStorage.getItem('productos')) || [];  
     const producto = productos.find(item => item.nombre === nombre);
     return producto ? producto.imagenes[0] : 'comingsoon.jpeg';
 }
 
-// Cargar los productos al cargar la página
+
 window.onload = function() {
     mostrarFormularioFechas();
 };
 
-// Función para mostrar el formulario de datos personales
+
 function mostrarFormularioDatosPersonales() {
     const contenedor = document.querySelector('.contenedor-datos');
 
-    // Recuperar datos guardados en localStorage, si existen
     const nombreCompleto = localStorage.getItem('nombreCompleto') || '';
     const dni = localStorage.getItem('dni') || '';
     const email = localStorage.getItem('email') || '';
@@ -36,16 +35,16 @@ function mostrarFormularioDatosPersonales() {
         
     `;
     
-    // Asignar evento al botón de confirmar datos
+
     document.getElementById('confirmar-datos').addEventListener('click', function () {
         const nombreCompleto = document.getElementById('nombre-completo').value.trim();
         const dni = document.getElementById('dni').value.trim();
         const email = document.getElementById('email').value.trim();
         const telefono = document.getElementById('telefono').value.trim();
 
-        // Validar que todos los campos estén completos
+    
         if (nombreCompleto && dni && email && telefono) {
-            // Guardar datos en el localStorage
+        
             localStorage.setItem('nombreCompleto', nombreCompleto);
             localStorage.setItem('dni', dni);
             localStorage.setItem('email', email);
@@ -63,16 +62,16 @@ function mostrarFormularioDatosPersonales() {
     });
 }
 
-// Modificar onload para mostrar primero el formulario de datos personales
+
 window.onload = function () {
     mostrarFormularioDatosPersonales();
 };
 
-// Función para mostrar el formulario de fechas
+
 function mostrarFormularioFechas() {
     const contenedor = document.querySelector('.contenedor-fechas');
 
-    // Recuperar las fechas guardadas en localStorage, si existen
+
     const fechaLlegada = localStorage.getItem('fechaLlegada') || '';
     const fechaSalida = localStorage.getItem('fechaSalida') || '';
 
@@ -85,32 +84,28 @@ function mostrarFormularioFechas() {
         <button id="confirmar-fechas">Seleccionar fechas</button>
     `;
 
-    // Asignar evento al botón de actualizar fechas
+
     document.getElementById('confirmar-fechas').addEventListener('click', function() {
         const fechaLlegada = document.getElementById('fecha-llegada').value;
         const fechaSalida = document.getElementById('fecha-salida').value;
 
-         // Verificar que ambas fechas sean seleccionadas
+    
             if (fechaLlegada && fechaSalida) {
-            // Guardar fechas en el localStorage
+            
             localStorage.setItem('fechaLlegada', fechaLlegada);
             localStorage.setItem('fechaSalida', fechaSalida);
 
-            // Calcular la cantidad de días entre las fechas
             const fechaLlegadaObj = new Date(fechaLlegada);
             const fechaSalidaObj = new Date(fechaSalida);
 
-            // Restar un día a la fecha de salida para evitar contar el día de salida
             fechaSalidaObj.setDate(fechaSalidaObj.getDate() - 1);
 
-            // Calcular la diferencia en días
             const diasTotales = Math.floor((fechaSalidaObj - fechaLlegadaObj) / (1000 * 60 * 60 * 24));
 
-            // Guardar diasTotales en localStorage
             localStorage.setItem('diasTotales', diasTotales);
             
 
-            // Llamar a la función que muestra los productos (puedes agregarla o personalizarla según sea necesario)
+            
             mostrarProductos(diasTotales);
         } else {
             Swal.fire({
@@ -124,24 +119,22 @@ function mostrarFormularioFechas() {
     });
 }
 
-// Función para mostrar los productos
+
 function mostrarProductos() {
     fetch('./info.json')
         .then(response => response.json())
         .then(productos => {
-            // Guardamos los productos en el localStorage
+            
             localStorage.setItem('productos', JSON.stringify(productos));
             agregarProductos(productos);
         })
 }
 
-// Función para agregar los productos al DOM
 function agregarProductos(productos) {
     const contenedorHabitaciones = document.querySelector('.productos-habitaciones');
-    const contenedorServiciosHabitacion = document.querySelector('.productos-servicios-habitacion');
-    const contenedorServiciosPlaya = document.querySelector('.productos-servicios-playa');
+    const contenedorExcursiones = document.querySelector('.productos-excursiones');  
 
-    if (!contenedorHabitaciones || !contenedorServiciosHabitacion || !contenedorServiciosPlaya) {
+    if (!contenedorHabitaciones || !contenedorExcursiones) {
         return;
     }
 
@@ -157,16 +150,13 @@ function agregarProductos(productos) {
             <button>Agregar al Carrito</button> <input type="number" class="cantidad" value="1" min="1" style="width: 60px; margin-bottom: 10px;">
         `;
 
-        // Agregar la tarjeta al contenedor según la categoría
+    
         if (producto.categoria === "habitaciones") {
             contenedorHabitaciones.appendChild(tarjeta);
-        } else if (producto.categoria === "servicio-habitacion") {
-            contenedorServiciosHabitacion.appendChild(tarjeta);
-        } else if (producto.categoria === "servicio-playa") {
-            contenedorServiciosPlaya.appendChild(tarjeta);
+        } else if (producto.categoria === "excursiones") {  
+            contenedorExcursiones.appendChild(tarjeta);
         }
 
-        // Añadir evento a la imagen para abrir la galería
         const imagenProducto = tarjeta.querySelector('.imagen-producto');
         imagenProducto.addEventListener('click', function() {
             const imagenes = JSON.parse(imagenProducto.getAttribute('data-imagenes'));
@@ -174,7 +164,6 @@ function agregarProductos(productos) {
         });
     });
 
-    // Agregar al carrito
     const botonesAgregarCarrito = document.querySelectorAll('.catalogo button');
     botonesAgregarCarrito.forEach((boton) => {
         boton.addEventListener('click', function() {
@@ -196,10 +185,10 @@ function mostrarGaleria(imagenes) {
 
     
     const tarjetaImagen = document.createElement('div');
-    tarjetaImagen.classList.add('tarjeta-imagen'); // Este es el contenedor de la tarjeta
+    tarjetaImagen.classList.add('tarjeta-imagen');
     galeria.appendChild(tarjetaImagen);
 
-    // Crear la imagen que se va a mostrar
+    
     const imagenElemento = document.createElement('img');
     imagenElemento.src = `./imagenes/${imagenes[0]}`;
     imagenElemento.alt = "Imagen del producto";
@@ -268,28 +257,28 @@ tarjetaImagen.appendChild(botones);
 
 function agregarAlCarrito(nombre, precio, cantidad) {
     let carrito = JSON.parse(localStorage.getItem('carrito')) || [];
-    // Verificar si el producto ya está en el carrito
+
     const productoExistente = carrito.find(item => item.nombre === nombre);
     if (productoExistente) {
         productoExistente.cantidad += cantidad;
     } else {
         carrito.push({ nombre, precio, cantidad });
     }
-   
+
     localStorage.setItem('carrito', JSON.stringify(carrito));
     const mensaje = document.createElement('div');
     mensaje.classList.add('mensaje-carrito');
     mensaje.innerHTML = `${nombre} agregado al carrito`;
-   
+
     document.body.appendChild(mensaje);
     setTimeout(() => {
         mensaje.remove();
     }, 1000);
-   
+
     mostrarCarrito();
 }
 
-// Función para restar un ítem del carrito
+
 function restarProducto(nombre) {
     let carrito = JSON.parse(localStorage.getItem('carrito')) || [];
     const producto = carrito.find(item => item.nombre === nombre);
@@ -299,33 +288,33 @@ function restarProducto(nombre) {
         carrito = carrito.filter(item => item.nombre !== nombre);
     }
     localStorage.setItem('carrito', JSON.stringify(carrito));
-    // Actualizar la visualización del carrito
+    
     mostrarCarrito();
 }
 
-// Función para sumar un ítem del carrito
+
 function sumarProducto(nombre) {
     let carrito = JSON.parse(localStorage.getItem('carrito')) || [];
     const producto = carrito.find(item => item.nombre === nombre);
     if (producto) {
-        producto.cantidad += 1; // Aumentar la cantidad
+        producto.cantidad += 1; 
     }
     localStorage.setItem('carrito', JSON.stringify(carrito));
-    // Actualizar la visualización del carrito
+
     mostrarCarrito();
 }
 
-// Función para eliminar un producto del carrito
+
 function eliminarProducto(nombre) {
     let carrito = JSON.parse(localStorage.getItem('carrito')) || [];
-    // Eliminar el producto del carrito
+
     carrito = carrito.filter(item => item.nombre !== nombre);
     localStorage.setItem('carrito', JSON.stringify(carrito));
-    // Actualizar la visualización del carrito
+
     mostrarCarrito();
 }
 
-// Mostrar el carrito
+
 function mostrarCarrito() {
     const carrito = JSON.parse(localStorage.getItem('carrito')) || [];
     const carritoContainer = document.getElementById('carrito-container');
@@ -336,7 +325,7 @@ function mostrarCarrito() {
     }
     let total = 0;
     let detallesCarrito = '';
-    // Crear un contenedor para los productos del carrito
+
     const productosCarrito = document.createElement('div');
     productosCarrito.classList.add('productos-carrito');
     carrito.forEach(item => {
@@ -361,7 +350,7 @@ function mostrarCarrito() {
     });
     carritoContainer.appendChild(productosCarrito);
 
-    // Agregar eventos a los botones de sumar, restar y eliminar
+
     const botonesRestar = document.querySelectorAll('.restar');
     botonesRestar.forEach((boton) => {
         boton.addEventListener('click', function() {
@@ -387,7 +376,7 @@ function mostrarCarrito() {
     });
 }
 
-// Función para obtener la imagen del producto (si no existe, puedes usar una imagen predeterminada)
+
 function obtenerImagen(nombre) {
     const productos = JSON.parse(localStorage.getItem('productos')) || [];  
     const producto = productos.find(item => item.nombre === nombre);
@@ -430,10 +419,10 @@ function obtenerImagen(nombre) {
         });
     });
 
-    // Inicializa EmailJS con tu clave pública
+
     emailjs.init("jG55NQ5pF4Qie2WvZ"); 
     
-    // Evento para el botón de enviar consulta
+
     const botonEnviarConsulta = document.querySelector('.btn-enviar-consulta');
     if (botonEnviarConsulta) {
         botonEnviarConsulta.addEventListener('click', function() {
