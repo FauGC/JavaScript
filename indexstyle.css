@@ -590,4 +590,20 @@ button.siguiente:hover, button.anterior:hover, button.cerrar-galeria:hover {
   border-radius: 10px;
 }
 
+@media (max-width: 768px) {
+  .contenedor-datos {
+    width: 90%;
+    margin: 0.5rem auto;
+  }
+  .contenedor-datos .datos {
+    width: 100%;
+    height: auto;
+  }
+  .contenedor-datos button {
+    width: 100%;
+    font-size: 1.2rem;
+    padding: 0.8rem;
+  }
+}
+
 /*# sourceMappingURL=indexstyle.css.map */
