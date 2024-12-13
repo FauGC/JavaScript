@@ -12,18 +12,19 @@
   width: 100%;
   text-align: center;
   margin: 0;
+  
 }
 
 
 .logo {
-  background: radial-gradient(circle, rgb(241, 205, 0), rgb(255, 255, 255));
+  background: radial-gradient(circle,#edd79f, rgb(255, 255, 255));
   width: 100%;
-  height: 400px;
+  height: 300px;
   text-align: center;
 
   img {
     width: auto;
-    height: 400px;
+    height: 300px;
     object-fit: contain;
   }
 }
@@ -70,6 +71,11 @@
 
 .main-index{
   margin-bottom: 100px;
+  display: flex;
+  flex-direction: column;
+  align-items: center; 
+  justify-content: center;
+  width: 100%; 
 }
 
 .catalogos-container {
@@ -234,14 +240,14 @@
 
 
 .ver-carrito {
-  background-color: #28a745;padding: 20px;
+  background: linear-gradient(to bottom, #f1ede4,#528986);
   margin-bottom: 5px; 
   border: 1px solid #ccc;
   padding: 1rem;
   margin: 0.5rem;
   border-radius: 10px;
   box-sizing: border-box;
-  width: auto;
+  width: 90%;
 
   h2{
     color: rgb(0, 0, 0);
@@ -486,7 +492,7 @@
     padding: 1rem;
     margin: 0.5rem;
     border-radius: 10px;
-    background: linear-gradient(to bottom, #009185,#009185);
+    background: linear-gradient(to bottom, #ecdcb3,#618a87);
     box-sizing: border-box;
     width: 600px;
     text-align: center;
@@ -525,26 +531,18 @@
   
 }
 
-.imagen
-{      
-  img
-  {
-    align-items: right;
-    border: 1px solid #ccc;
-    margin: 0.5rem;
-    border-radius: 10px;
-    background-color: #f9f9f9;
-    box-sizing: border-box;
-    width: 625px; 
-    }
-    
+
+
+.cuestionarios {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: auto;
+  flex-direction: column;
+  width: 100%;
+  padding: 0;
 }
 
-.cuestionarios
-{
-  display: flex;
-  
-}
 
 .titulodecatalogo
 {
@@ -598,18 +596,6 @@
   cursor: pointer;
 }
 
-.galeria-imagenes {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-color: rgba(0, 0, 0, 0.8);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  z-index: 1000;
-}
 
 .tarjeta-imagen {
   background-color: white;
@@ -651,4 +637,54 @@ button.cerrar-galeria {
 
 button.siguiente:hover, button.anterior:hover, button.cerrar-galeria:hover {
   opacity: 0.8;
+}
+
+
+.imagen {
+  padding: 20px;
+  background: linear-gradient(to bottom, #fbf4b7, #ffffff);
+  margin-bottom: 5px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border: 1px solid #ccc;
+  padding: 1rem;
+  margin: 0.5rem;
+  border-radius: 10px;
+  box-sizing: border-box;
+  width: 70%;
+  text-align: center;
+  justify-content: center;
+}
+
+.carousel-container {
+  width: 100%;
+  height: auto; 
+  max-width: 700px; 
+  overflow: hidden; 
+  border-radius: 10px;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+  margin-left: 5px;
+  margin-top: 10px;
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+}
+
+.carousel-images {
+  display: flex;
+  transition: transform 3s ease-in-out;
+  width: 100%;
+  
+
+  img {
+    width: 100%; 
+    flex-shrink: 0; 
+    border-radius: 10px;
+    
+  }
+
 }

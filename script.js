@@ -71,7 +71,6 @@ window.onload = function () {
 function mostrarFormularioFechas() {
     const contenedor = document.querySelector('.contenedor-fechas');
 
-
     const fechaLlegada = localStorage.getItem('fechaLlegada') || '';
     const fechaSalida = localStorage.getItem('fechaSalida') || '';
 
@@ -84,14 +83,32 @@ function mostrarFormularioFechas() {
         <button id="confirmar-fechas">Seleccionar fechas</button>
     `;
 
+    let fechasConfirmadas = false; 
+    const fechaLlegadaInput = document.getElementById('fecha-llegada');
+    const fechaSalidaInput = document.getElementById('fecha-salida');
+    const confirmarFechasBtn = document.getElementById('confirmar-fechas');
 
-    document.getElementById('confirmar-fechas').addEventListener('click', function() {
-        const fechaLlegada = document.getElementById('fecha-llegada').value;
-        const fechaSalida = document.getElementById('fecha-salida').value;
+    function mostrarAlertaFechasBloqueadas() {
+        Swal.fire({
+            icon: 'error',
+            title: 'Cambios no permitidos',
+            text: 'Si quieres cambiar las fechas, por favor reinicia la página.',
+            confirmButtonColor: '#d33',
+            background: '#f8d7da',
+        });
+    }
 
-    
-            if (fechaLlegada && fechaSalida) {
+    confirmarFechasBtn.addEventListener('click', function() {
+        if (fechasConfirmadas) {
             
+            mostrarAlertaFechasBloqueadas();
+            return;
+        }
+
+        const fechaLlegada = fechaLlegadaInput.value;
+        const fechaSalida = fechaSalidaInput.value;
+
+        if (fechaLlegada && fechaSalida) {
             localStorage.setItem('fechaLlegada', fechaLlegada);
             localStorage.setItem('fechaSalida', fechaSalida);
 
@@ -100,12 +117,13 @@ function mostrarFormularioFechas() {
 
             fechaSalidaObj.setDate(fechaSalidaObj.getDate() - 1);
 
-            const diasTotales = Math.floor((fechaSalidaObj - fechaLlegadaObj) / (1000 * 60 * 60 * 24));
+            const diasTotales = ((fechaSalidaObj - fechaLlegadaObj) / (1000 * 60 * 60 * 24));
 
             localStorage.setItem('diasTotales', diasTotales);
-            
 
             
+            fechasConfirmadas = true; 
+
             mostrarProductos(diasTotales);
         } else {
             Swal.fire({
@@ -117,7 +135,25 @@ function mostrarFormularioFechas() {
             });
         }
     });
+
+
+    fechaLlegadaInput.addEventListener('input', function() {
+        if (fechasConfirmadas) {
+            
+            fechaLlegadaInput.value = localStorage.getItem('fechaLlegada');
+            mostrarAlertaFechasBloqueadas();
+        }
+    });
+
+    fechaSalidaInput.addEventListener('input', function() {
+        if (fechasConfirmadas) {
+            
+            fechaSalidaInput.value = localStorage.getItem('fechaSalida');
+            mostrarAlertaFechasBloqueadas();
+        }
+    });
 }
+
 
 
 function mostrarProductos() {
@@ -329,15 +365,19 @@ function mostrarCarrito() {
     const productosCarrito = document.createElement('div');
     productosCarrito.classList.add('productos-carrito');
     carrito.forEach(item => {
-        total += item.precio * item.cantidad;
-        detallesCarrito += ` | ${item.nombre} - $${item.precio} x${item.cantidad} x |  `;
+
+        const diasTotales = localStorage.getItem('diasTotales');
+
+        total += item.precio * item.cantidad * diasTotales;
+
+        detallesCarrito += ` | ${item.nombre} - USD$ ${item.precio} x ${item.cantidad} unidad/es x ${diasTotales} días.|  `;
         const itemCarrito = document.createElement('div');
         itemCarrito.classList.add('item-carrito');
         itemCarrito.innerHTML = `
             <div class="producto-card">
                 <img src="./imagenes/${obtenerImagen(item.nombre)}" alt="${item.nombre}" class="imagen-producto">
                 <div class="detalles-producto">
-                    <p>${item.nombre} - $${item.precio} x${item.cantidad}</p>
+                    <p>${item.nombre} - USD $${item.precio} x ${item.cantidad} unidad/es x ${diasTotales} días.</p>
                     <div class="boton">
                         <button class="sumar" data-nombre="${item.nombre}">+</button>
                         <button class="restar" data-nombre="${item.nombre}">-</button>
@@ -348,8 +388,8 @@ function mostrarCarrito() {
         `;
         productosCarrito.appendChild(itemCarrito);
     });
-    carritoContainer.appendChild(productosCarrito);
 
+    carritoContainer.appendChild(productosCarrito);
 
     const botonesRestar = document.querySelectorAll('.restar');
     botonesRestar.forEach((boton) => {
@@ -375,10 +415,6 @@ function mostrarCarrito() {
         });
     });
 
-
-
-
-    
     const totalCarrito = document.createElement('div');
     totalCarrito.innerHTML = `
         <div class="total-carrito">
@@ -388,24 +424,20 @@ function mostrarCarrito() {
     `;
     carritoContainer.appendChild(totalCarrito);
 
-
     emailjs.init("jG55NQ5pF4Qie2WvZ"); 
-    
 
     const botonEnviarConsulta = document.querySelector('.btn-enviar-consulta');
     if (botonEnviarConsulta) {
         botonEnviarConsulta.addEventListener('click', function() {
-        
+
             const nombreCompleto = localStorage.getItem('nombreCompleto') || '';
             const dni = localStorage.getItem('dni') || '';
             const emailUsuario = localStorage.getItem('email') || '';
             const telefono = localStorage.getItem('telefono') || ''; 
-
-            
+            const diasTotales = localStorage.getItem('diasTotales') || '';            
             const fechaLlegada = localStorage.getItem('fechaLlegada') || '';
             const fechaSalida = localStorage.getItem('fechaSalida') || '';
 
-            
             emailjs.send('service_dgomyco', 'template_bx1tqtb', {
                 to_email: 'lembranzasbr@gmail.com',  
                 subject: 'Nueva Consulta Recibida',
@@ -414,21 +446,36 @@ function mostrarCarrito() {
                 emailUsuario: emailUsuario,  
                 telefono: telefono,          
                 fechaLlegada: fechaLlegada,  
-                fechaSalida: fechaSalida,    
+                fechaSalida: fechaSalida,
+                diasTotales: diasTotales,    
                 detallesCarrito: detallesCarrito,  
-                total: total                 
-            
+                total: total                
             });
 
-            
             Swal.fire({
                 icon: 'success',
                 title: 'Solicitud enviada',
                 text: 'Nos estaremos poniendo en contacto contigo en la brevedad. ¡Nos vemos pronto!',
                 confirmButtonText: '¡Gracias!'
+            }).then(() => {
+                localStorage.clear(); 
+                window.location.href = "/"; 
             });
         });
     }
 }
 
 
+
+document.addEventListener('DOMContentLoaded', () => {
+    const carouselImages = document.querySelector('.carousel-images');
+    const images = document.querySelectorAll('.carousel-images img');
+    let currentIndex = 0;
+
+    function slideCarousel() {
+        currentIndex = (currentIndex + 1) % images.length; 
+        carouselImages.style.transform = `translateX(-${currentIndex * 100}%)`;
+    }
+
+    setInterval(slideCarousel, 5000); 
+});
