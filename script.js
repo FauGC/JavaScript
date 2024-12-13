@@ -374,13 +374,7 @@ function mostrarCarrito() {
             eliminarProducto(nombreProducto);
         });
     });
-}
 
-
-function obtenerImagen(nombre) {
-    const productos = JSON.parse(localStorage.getItem('productos')) || [];  
-    const producto = productos.find(item => item.nombre === nombre);
-    return producto ? producto.imagenes[0] : 'comingsoon.jpeg';
 
 
 
@@ -393,31 +387,6 @@ function obtenerImagen(nombre) {
         </div>
     `;
     carritoContainer.appendChild(totalCarrito);
-
-
-    const botonesRestar = document.querySelectorAll('.restar');
-    botonesRestar.forEach((boton) => {
-        boton.addEventListener('click', function() {
-            const nombreProducto = this.dataset.nombre;
-            restarProducto(nombreProducto);
-        });
-    });
-
-    const botonesSumar = document.querySelectorAll('.sumar');
-    botonesSumar.forEach((boton) => {
-        boton.addEventListener('click', function() {
-            const nombreProducto = this.dataset.nombre;
-            sumarProducto(nombreProducto);
-        });
-    });
-
-    const botonesEliminar = document.querySelectorAll('.eliminar');
-    botonesEliminar.forEach((boton) => {
-        boton.addEventListener('click', function() {
-            const nombreProducto = this.dataset.nombre;
-            eliminarProducto(nombreProducto);
-        });
-    });
 
 
     emailjs.init("jG55NQ5pF4Qie2WvZ"); 
