@@ -2,7 +2,6 @@ window.onload = function() {
     mostrarFormularioFechas();
 };
 
-
 function mostrarFormularioDatosPersonales() {
     const contenedor = document.querySelector('.contenedor-datos');
 
@@ -21,12 +20,11 @@ function mostrarFormularioDatosPersonales() {
             <label for="email"><h3>Correo Electrónico:</h3></label>
             <input type="email" id="email" value="${email}">
             <label for="telefono"><h3>Número de Teléfono (incluyendo país y área):</h3></label>
-            <input type="text" id="telefono" value="${telefono}" placeholder="+XX XXX XXXXXXXX">  <!-- Campo para teléfono -->
+            <input type="text" id="telefono" value="${telefono}" placeholder="+XX XXX XXXXXXXX">
         </div>
             <button id="confirmar-datos">Continuar</button>
         
     `;
-    
 
     document.getElementById('confirmar-datos').addEventListener('click', function () {
         const nombreCompleto = document.getElementById('nombre-completo').value.trim();
@@ -34,9 +32,7 @@ function mostrarFormularioDatosPersonales() {
         const email = document.getElementById('email').value.trim();
         const telefono = document.getElementById('telefono').value.trim();
 
-    
         if (nombreCompleto && dni && email && telefono) {
-        
             localStorage.setItem('nombreCompleto', nombreCompleto);
             localStorage.setItem('dni', dni);
             localStorage.setItem('email', email);
@@ -54,11 +50,9 @@ function mostrarFormularioDatosPersonales() {
     });
 }
 
-
 window.onload = function () {
     mostrarFormularioDatosPersonales();
 };
-
 
 function mostrarFormularioFechas() {
     const contenedor = document.querySelector('.contenedor-fechas');
@@ -66,12 +60,14 @@ function mostrarFormularioFechas() {
     const fechaLlegada = localStorage.getItem('fechaLlegada') || '';
     const fechaSalida = localStorage.getItem('fechaSalida') || '';
 
+    const fechaHoy = new Date().toISOString().split('T')[0];
+
     contenedor.innerHTML = `
         <h2>Segundo, ya podes ingresár las fechas en las que viajaras con nosotros:</h2>
         <label for="fecha-llegada">Fecha de Llegada:</label>
-        <input type="date" id="fecha-llegada" value="${fechaLlegada}">
+        <input type="date" id="fecha-llegada" value="${fechaLlegada}" min="${fechaHoy}">
         <label for="fecha-salida">Fecha de Salida:</label>
-        <input type="date" id="fecha-salida" value="${fechaSalida}">
+        <input type="date" id="fecha-salida" value="${fechaSalida}" min="${fechaHoy}">
         <button id="confirmar-fechas">Seleccionar fechas</button>
     `;
 
@@ -99,46 +95,56 @@ function mostrarFormularioFechas() {
         const fechaLlegada = fechaLlegadaInput.value;
         const fechaSalida = fechaSalidaInput.value;
 
-        if (fechaLlegada && fechaSalida) {
-            const fechaLlegadaObj = new Date(fechaLlegada);
-            const fechaSalidaObj = new Date(fechaSalida);
+        const fechaLlegadaObj = new Date(fechaLlegada);
+        const fechaSalidaObj = new Date(fechaSalida);
 
-            if (fechaSalidaObj < fechaLlegadaObj) {
-                Swal.fire({
-                    icon: 'error',
-                    title: 'Error',
-                    text: 'No puedes elegir una fecha de salida anterior a la fecha de llegada.',
-                    confirmButtonColor: '#d33',
-                    background: '#f8d7da'
-                });
-                return;
-            }
-
-            localStorage.setItem('fechaLlegada', fechaLlegada);
-            localStorage.setItem('fechaSalida', fechaSalida);
-
-            const diasTotales = ((fechaSalidaObj - fechaLlegadaObj) / (1000 * 60 * 60 * 24));
-
-            localStorage.setItem('diasTotales', diasTotales);
-
-            fechasConfirmadas = true;
-
-            mostrarProductos(diasTotales);
-        } else {
+        if (fechaLlegadaObj < new Date(fechaHoy)) {
             Swal.fire({
                 icon: 'error',
                 title: 'Error',
-                text: 'Por favor, completa ambas fechas.',
+                text: 'La fecha de llegada debe ser hoy o posterior.',
                 confirmButtonColor: '#d33',
                 background: '#f8d7da'
             });
+            return;
         }
-    });
 
+        if (fechaSalidaObj < new Date(fechaHoy)) {
+            Swal.fire({
+                icon: 'error',
+                title: 'Error',
+                text: 'La fecha de salida debe ser hoy o posterior.',
+                confirmButtonColor: '#d33',
+                background: '#f8d7da'
+            });
+            return;
+        }
+
+        if (fechaSalidaObj < fechaLlegadaObj) {
+            Swal.fire({
+                icon: 'error',
+                title: 'Error',
+                text: 'No puedes elegir una fecha de salida anterior a la fecha de llegada.',
+                confirmButtonColor: '#d33',
+                background: '#f8d7da'
+            });
+            return;
+        }
+
+        localStorage.setItem('fechaLlegada', fechaLlegada);
+        localStorage.setItem('fechaSalida', fechaSalida);
+
+        const diasTotales = ((fechaSalidaObj - fechaLlegadaObj) / (1000 * 60 * 60 * 24));
+
+        localStorage.setItem('diasTotales', diasTotales);
+
+        fechasConfirmadas = true;
+
+        mostrarProductos(diasTotales);
+    });
 
     fechaLlegadaInput.addEventListener('input', function() {
         if (fechasConfirmadas) {
-            
             fechaLlegadaInput.value = localStorage.getItem('fechaLlegada');
             mostrarAlertaFechasBloqueadas();
         }
@@ -146,7 +152,6 @@ function mostrarFormularioFechas() {
 
     fechaSalidaInput.addEventListener('input', function() {
         if (fechasConfirmadas) {
-            
             fechaSalidaInput.value = localStorage.getItem('fechaSalida');
             mostrarAlertaFechasBloqueadas();
         }
