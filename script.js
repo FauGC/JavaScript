@@ -2,158 +2,8 @@
 function obtenerImagen(nombre) {
     const productos = JSON.parse(localStorage.getItem('productos')) || [];  
     const producto = productos.find(item => item.nombre === nombre);
-    return producto ? producto.imagenes[0] : 'comingsoon.jpeg';
+    return producto ? producto.imagenes[0] : 's';
 }
-
-
-window.onload = function() {
-    mostrarFormularioFechas();
-};
-
-
-function mostrarFormularioDatosPersonales() {
-    const contenedor = document.querySelector('.contenedor-datos');
-
-    const nombreCompleto = localStorage.getItem('nombreCompleto') || '';
-    const dni = localStorage.getItem('dni') || '';
-    const email = localStorage.getItem('email') || '';
-    const telefono = localStorage.getItem('telefono') || ''; 
-
-    contenedor.innerHTML = `
-        <h2>Primero, ingresa tus datos personales:</h2>
-        <div class=datos>
-            <label for="nombre-completo"><h3>Nombre Completo:</h3></label>
-            <input type="text" id="nombre-completo" value="${nombreCompleto}">
-            <label for="dni"><h3>DNI:</h3></label>
-            <input type="text" id="dni" value="${dni}">
-            <label for="email"><h3>Correo Electrónico:</h3></label>
-            <input type="email" id="email" value="${email}">
-            <label for="telefono"><h3>Número de Teléfono (incluyendo país y área):</h3></label>
-            <input type="text" id="telefono" value="${telefono}" placeholder="+XX XXX XXXXXXXX">  <!-- Campo para teléfono -->
-        </div>
-            <button id="confirmar-datos">Continuar</button>
-        
-    `;
-    
-
-    document.getElementById('confirmar-datos').addEventListener('click', function () {
-        const nombreCompleto = document.getElementById('nombre-completo').value.trim();
-        const dni = document.getElementById('dni').value.trim();
-        const email = document.getElementById('email').value.trim();
-        const telefono = document.getElementById('telefono').value.trim();
-
-    
-        if (nombreCompleto && dni && email && telefono) {
-        
-            localStorage.setItem('nombreCompleto', nombreCompleto);
-            localStorage.setItem('dni', dni);
-            localStorage.setItem('email', email);
-            localStorage.setItem('telefono', telefono); 
-            mostrarFormularioFechas(); 
-        } else {
-            Swal.fire({
-                icon: 'error',
-                title: 'Error',
-                text: 'Por favor, completa todos los campos.',
-                confirmButtonColor: '#d33',
-                background: '#f8d7da',
-            });
-        }
-    });
-}
-
-
-window.onload = function () {
-    mostrarFormularioDatosPersonales();
-};
-
-
-function mostrarFormularioFechas() {
-    const contenedor = document.querySelector('.contenedor-fechas');
-
-    const fechaLlegada = localStorage.getItem('fechaLlegada') || '';
-    const fechaSalida = localStorage.getItem('fechaSalida') || '';
-
-    contenedor.innerHTML = `
-        <h2>Segundo, ya podes ingresár las fechas en las que viajaras con nosotros:</h2>
-        <label for="fecha-llegada">Fecha de Llegada:</label>
-        <input type="date" id="fecha-llegada" value="${fechaLlegada}">
-        <label for="fecha-salida">Fecha de Salida:</label>
-        <input type="date" id="fecha-salida" value="${fechaSalida}">
-        <button id="confirmar-fechas">Seleccionar fechas</button>
-    `;
-
-    let fechasConfirmadas = false; 
-    const fechaLlegadaInput = document.getElementById('fecha-llegada');
-    const fechaSalidaInput = document.getElementById('fecha-salida');
-    const confirmarFechasBtn = document.getElementById('confirmar-fechas');
-
-    function mostrarAlertaFechasBloqueadas() {
-        Swal.fire({
-            icon: 'error',
-            title: 'Cambios no permitidos',
-            text: 'Si quieres cambiar las fechas, por favor reinicia la página.',
-            confirmButtonColor: '#d33',
-            background: '#f8d7da',
-        });
-    }
-
-    confirmarFechasBtn.addEventListener('click', function() {
-        if (fechasConfirmadas) {
-            
-            mostrarAlertaFechasBloqueadas();
-            return;
-        }
-
-        const fechaLlegada = fechaLlegadaInput.value;
-        const fechaSalida = fechaSalidaInput.value;
-
-        if (fechaLlegada && fechaSalida) {
-            localStorage.setItem('fechaLlegada', fechaLlegada);
-            localStorage.setItem('fechaSalida', fechaSalida);
-
-            const fechaLlegadaObj = new Date(fechaLlegada);
-            const fechaSalidaObj = new Date(fechaSalida);
-
-            fechaSalidaObj.setDate(fechaSalidaObj.getDate() - 1);
-
-            const diasTotales = ((fechaSalidaObj - fechaLlegadaObj) / (1000 * 60 * 60 * 24));
-
-            localStorage.setItem('diasTotales', diasTotales);
-
-            
-            fechasConfirmadas = true; 
-
-            mostrarProductos(diasTotales);
-        } else {
-            Swal.fire({
-                icon: 'error',
-                title: 'Error',
-                text: 'Por favor, completa ambas fechas.',
-                confirmButtonColor: '#d33',
-                background: '#f8d7da',
-            });
-        }
-    });
-
-
-    fechaLlegadaInput.addEventListener('input', function() {
-        if (fechasConfirmadas) {
-            
-            fechaLlegadaInput.value = localStorage.getItem('fechaLlegada');
-            mostrarAlertaFechasBloqueadas();
-        }
-    });
-
-    fechaSalidaInput.addEventListener('input', function() {
-        if (fechasConfirmadas) {
-            
-            fechaSalidaInput.value = localStorage.getItem('fechaSalida');
-            mostrarAlertaFechasBloqueadas();
-        }
-    });
-}
-
 
 
 function mostrarProductos() {
@@ -290,67 +140,6 @@ tarjetaImagen.appendChild(botones);
     document.body.appendChild(galeria);
 }
 
-
-function agregarAlCarrito(nombre, precio, cantidad) {
-    let carrito = JSON.parse(localStorage.getItem('carrito')) || [];
-
-    const productoExistente = carrito.find(item => item.nombre === nombre);
-    if (productoExistente) {
-        productoExistente.cantidad += cantidad;
-    } else {
-        carrito.push({ nombre, precio, cantidad });
-    }
-
-    localStorage.setItem('carrito', JSON.stringify(carrito));
-    const mensaje = document.createElement('div');
-    mensaje.classList.add('mensaje-carrito');
-    mensaje.innerHTML = `${nombre} agregado al carrito`;
-
-    document.body.appendChild(mensaje);
-    setTimeout(() => {
-        mensaje.remove();
-    }, 1000);
-
-    mostrarCarrito();
-}
-
-
-function restarProducto(nombre) {
-    let carrito = JSON.parse(localStorage.getItem('carrito')) || [];
-    const producto = carrito.find(item => item.nombre === nombre);
-    if (producto && producto.cantidad > 1) {
-        producto.cantidad -= 1;
-    } else {
-        carrito = carrito.filter(item => item.nombre !== nombre);
-    }
-    localStorage.setItem('carrito', JSON.stringify(carrito));
-    
-    mostrarCarrito();
-}
-
-
-function sumarProducto(nombre) {
-    let carrito = JSON.parse(localStorage.getItem('carrito')) || [];
-    const producto = carrito.find(item => item.nombre === nombre);
-    if (producto) {
-        producto.cantidad += 1; 
-    }
-    localStorage.setItem('carrito', JSON.stringify(carrito));
-
-    mostrarCarrito();
-}
-
-
-function eliminarProducto(nombre) {
-    let carrito = JSON.parse(localStorage.getItem('carrito')) || [];
-
-    carrito = carrito.filter(item => item.nombre !== nombre);
-    localStorage.setItem('carrito', JSON.stringify(carrito));
-
-    mostrarCarrito();
-}
-
-
 function mostrarCarrito() {
     const carrito = JSON.parse(localStorage.getItem('carrito')) || [];
     const carritoContainer = document.getElementById('carrito-container');
@@ -472,10 +261,25 @@ document.addEventListener('DOMContentLoaded', () => {
     const images = document.querySelectorAll('.carousel-images img');
     let currentIndex = 0;
 
+    const firstImageClone = images[0].cloneNode(true);
+    carouselImages.appendChild(firstImageClone);
+
+    const totalImages = images.length + 1;
+
     function slideCarousel() {
-        currentIndex = (currentIndex + 1) % images.length; 
+        currentIndex++;
+        carouselImages.style.transition = 'transform 0.5s ease-in-out';
         carouselImages.style.transform = `translateX(-${currentIndex * 100}%)`;
+
+        if (currentIndex === totalImages - 1) {
+            setTimeout(() => {
+                carouselImages.style.transition = 'none';
+                currentIndex = 0;
+                carouselImages.style.transform = `translateX(0)`;
+            }, 500);
+        }
     }
 
-    setInterval(slideCarousel, 5000); 
+    setInterval(slideCarousel, 2000);
 });
+

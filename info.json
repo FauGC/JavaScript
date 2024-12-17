@@ -33,7 +33,7 @@
 },
 {
     "id": 3,
-    "nombre": "STANDARD FRENTE AL MAR ",
+    "nombre": "STANDARD FRENTE AL MAR",
     "categoria": "habitaciones",
     "subcategoria": "habitaciones",
     "stock": 10,
@@ -51,7 +51,7 @@
 },
 {
     "id": 4,
-    "nombre": "SUPERIOR FRENTE A LA CALLE ",
+    "nombre": "SUPERIOR FRENTE A LA CALLE",
     "categoria": "habitaciones",
     "subcategoria": "habitaciones",
     "stock": 10,
