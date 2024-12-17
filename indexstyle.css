@@ -189,7 +189,7 @@
   transform: scale(1.1);
 }
 
-.catalogo .catalogo button {
+.catalogo button {
   font-size: 1rem;
   padding: 10px 20px;
   background-color: #007bff;
@@ -200,7 +200,7 @@
   margin-top: 15px;
   width: 100%;
 }
-.catalogo .catalogo button:hover {
+.catalogo button:hover {
   background-color: #0056b3;
 }
 
@@ -452,17 +452,14 @@
   height: auto;
 }
 .contenedor-datos button {
-  display: flex;
-  flex-direction: column;
+  width: auto;
   border: 1px solid #ccc;
   padding: 1rem;
-  margin: 0.5rem;
   border-radius: 10px;
   background: linear-gradient(to bottom, #ecdcb3, #618a87);
   box-sizing: border-box;
   text-align: center;
-  font-size: 1.5rem;
-  text-decoration: solid;
+  font-size: 1rem;
   cursor: pointer;
   transition: background-color 0.3s ease;
 }

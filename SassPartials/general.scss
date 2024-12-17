@@ -225,8 +225,6 @@
 }
 
 
-.catalogo 
-
 .catalogo button {
   font-size: 1rem;
   padding: 10px 20px;
@@ -519,18 +517,15 @@
   }
 
   button {
-    display: flex;
-    flex-direction: column;
+    width: auto; 
     border: 1px solid #ccc;
     padding: 1rem;
-    margin: 0.5rem;
     border-radius: 10px;
     background: linear-gradient(to bottom, #ecdcb3, #618a87);
     box-sizing: border-box;
     text-align: center;
-    font-size: 1.5rem;
-    text-decoration: solid;
-    cursor: pointer; 
+    font-size: 1rem;
+    cursor: pointer;
     transition: background-color 0.3s ease;
 
     &:hover {
