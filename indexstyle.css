@@ -249,6 +249,7 @@
   border: 1px solid #ccc;
   padding: 1rem;
   margin: 0.5rem;
+  justify-content: center;
 }
 .item-carrito img {
   width: 100px;
@@ -273,6 +274,7 @@
   flex-wrap: wrap;
   gap: 1rem;
   justify-content: flex-start;
+  justify-content: center;
 }
 
 #carrito-container {
@@ -300,6 +302,7 @@
 
 .boton {
   display: flex;
+  justify-content: center;
 }
 
 .total-carrito {
@@ -614,6 +617,25 @@ button.siguiente:hover, button.anterior:hover, button.cerrar-galeria:hover {
   width: 100%;
   flex-shrink: 0;
   border-radius: 10px;
+}
+
+@media (max-width: 768px) {
+  .contenedor-datos {
+    width: 90%;
+    margin: 0.5rem auto;
+  }
+  .contenedor-datos .datos {
+    width: 100%;
+    height: auto;
+  }
+  .contenedor-datos button {
+    width: 100%;
+    font-size: 1.2rem;
+    padding: 0.8rem;
+  }
+  .eslogan h1 {
+    font-size: 1.2rem;
+  }
 }
 
 /*# sourceMappingURL=indexstyle.css.map */

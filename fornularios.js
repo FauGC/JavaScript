@@ -22,8 +22,7 @@ function mostrarFormularioDatosPersonales() {
             <label for="telefono"><h3>Número de Teléfono (incluyendo país y área):</h3></label>
             <input type="text" id="telefono" value="${telefono}" placeholder="+XX XXX XXXXXXXX">
         </div>
-            <button id="confirmar-datos">Continuar</button>
-        
+        <button id="confirmar-datos">Continuar</button>
     `;
 
     document.getElementById('confirmar-datos').addEventListener('click', function () {
@@ -87,13 +86,19 @@ function mostrarFormularioFechas() {
     }
 
     confirmarFechasBtn.addEventListener('click', function () {
-        if (fechasConfirmadas) {
-            mostrarAlertaFechasBloqueadas();
-            return;
-        }
-
         const fechaLlegada = fechaLlegadaInput.value;
         const fechaSalida = fechaSalidaInput.value;
+
+        if (!fechaLlegada || !fechaSalida) {
+            Swal.fire({
+                icon: 'error',
+                title: 'Error',
+                text: 'Debe seleccionar la fecha de salida y la fecha de llegada.',
+                confirmButtonColor: '#d33',
+                background: '#f8d7da',
+            });
+            return;
+        }
 
         const fechaLlegadaObj = new Date(fechaLlegada);
         const fechaSalidaObj = new Date(fechaSalida);
@@ -120,11 +125,11 @@ function mostrarFormularioFechas() {
             return;
         }
 
-        if (fechaSalidaObj < fechaLlegadaObj) {
+        if (fechaSalidaObj <= fechaLlegadaObj) {
             Swal.fire({
                 icon: 'error',
                 title: 'Error',
-                text: 'No puedes elegir una fecha de salida anterior a la fecha de llegada.',
+                text: 'La fecha de salida debe ser al menos un día después de la fecha de llegada.',
                 confirmButtonColor: '#d33',
                 background: '#f8d7da'
             });

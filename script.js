@@ -2,7 +2,7 @@
 function obtenerImagen(nombre) {
     const productos = JSON.parse(localStorage.getItem('productos')) || [];  
     const producto = productos.find(item => item.nombre === nombre);
-    return producto ? producto.imagenes[0] : 's';
+    return producto ? producto.imagenes[0] : 'LOGO.png';
 }
 
 
@@ -207,7 +207,7 @@ function mostrarCarrito() {
     const totalCarrito = document.createElement('div');
     totalCarrito.innerHTML = `
         <div class="total-carrito">
-            <h3>Total: $${total}</h3>
+            <h3>Total: USD$${total}</h3>
             <button class="btn-enviar-consulta">Enviar consulta</button>
         </div>
     `;
