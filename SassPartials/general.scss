@@ -81,6 +81,8 @@
   align-items: center; 
   justify-content: center;
   width: 100%; 
+  margin: 0;
+  padding: 10px;
 }
 
 .catalogos-container {
@@ -161,20 +163,17 @@
     text-decoration: solid;
     cursor: pointer; 
     transition: background-color 0.3s ease; 
-  
-  
+    
     &:hover 
     {
-      background-color:  #18f105; 
+      background: linear-gradient(to bottom, #c8bb98, #50716f);
     }
 
-    &:active {
-      background-color:  #0b8000; 
     }
-
-  }
 
 }
+
+
 
 .imagen-producto{
   
@@ -220,25 +219,24 @@
     }
     
   }
+
+  button {
+    font-size: 1rem;
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: rgb(0, 0, 0);
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 15px;
+    width: 100%; 
+  
+    &:hover {
+      background-color: #0056b3;
+    }
+  }
   
 
-}
-
-
-.catalogo button {
-  font-size: 1rem;
-  padding: 10px 20px;
-  background-color: #007bff;
-  color: rgb(0, 0, 0);
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-  margin-top: 15px;
-  width: 100%; 
-
-  &:hover {
-    background-color: #0056b3;
-  }
 }
 
 
@@ -254,7 +252,6 @@
   padding: 20px;
   box-sizing: border-box;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  margin: 10px 0;
 
   h2{
     background: linear-gradient(to bottom,#f1ede4, #528986);
@@ -273,8 +270,6 @@
   }
 
 }
-
-
 
 
 .item-carrito 
@@ -313,6 +308,10 @@
     display: flex;
     align-items: center;
     justify-content: center;
+
+    &:hover {
+      
+    }
   }
 }
 
@@ -458,12 +457,9 @@
     transition: background-color 0.3s ease;
 
     &:hover {
-      background-color: #18f105;
+      background: linear-gradient(to bottom, #c8bb98, #50716f);
     }
 
-    &:active {
-      background-color: #0b8000;
-    }
   }
 }
 
@@ -530,12 +526,9 @@
     align-items: center;
 
     &:hover {
-      background-color: #18f105;
+      background: linear-gradient(to bottom, #c8bb98, #50716f);
     }
 
-    &:active {
-      background-color: #0b8000;
-    }
   }
 }
 
@@ -719,3 +712,106 @@ button.siguiente:hover, button.anterior:hover, button.cerrar-galeria:hover {
     }
   }
 }
+
+.redes {
+  background: linear-gradient(to bottom,#528986, #f1ede4);
+  border-radius: 15px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  box-sizing: border-box;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  margin: 0;
+  padding: 0;
+  margin-bottom: 5px;
+  margin-top: 5px;
+
+  h2{
+    font-size: 1.5rem;
+    color: white;
+    text-decoration: underline;
+  }
+}
+
+.botones-redes{
+  border-radius: 15px;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  width: auto;
+  box-sizing: border-box;
+  margin: 10px;
+  padding: 10px;
+  margin-bottom: 5px;
+  margin-top: 5px;
+  margin-left: 5px;
+  justify-content: center;
+
+
+  a{
+    color: black;
+    background: linear-gradient(to bottom,#528986, #f1ede4);
+    border-radius: 15px;
+    display: flex;
+    align-items: center;
+    width: auto;
+    box-sizing: border-box;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin: 10px;
+    padding: 10px;
+    margin-bottom: 5px;
+    margin-top: 5px;
+
+    &:hover{
+      transform: scale(1.1); 
+    }  
+
+    h1{  
+      font-size: 1.5rem;
+  
+    }
+  }
+
+}
+
+.powered-by {
+  font-style: italic;
+  color: rgb(0, 0, 0);
+  text-align: right;
+  margin-top: 10px;
+}
+
+
+.baradero-street {
+  font-weight: bold;
+}
+
+
+
+@media (max-width: 768px) {
+  .contenedor-datos {
+    width: 90%;
+    margin: 0.5rem auto;
+  }
+  .contenedor-datos .datos {
+    width: 100%;
+    height: auto;
+  }
+  .contenedor-datos button {
+    width: 100%;
+    font-size: 1.2rem;
+    padding: 0.8rem;
+  }
+  .eslogan {
+    
+    h1 {
+      
+      font-size: 1.2rem;
+      
+    }
+  }
+}
+

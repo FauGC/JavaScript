@@ -212,49 +212,46 @@ function mostrarCarrito() {
         </div>
     `;
     carritoContainer.appendChild(totalCarrito);
-
-    emailjs.init("jG55NQ5pF4Qie2WvZ"); 
-
+    
+    emailjs.init("jG55NQ5pF4Qie2WvZ");
+    
     const botonEnviarConsulta = document.querySelector('.btn-enviar-consulta');
     if (botonEnviarConsulta) {
-        botonEnviarConsulta.addEventListener('click', function() {
-
-            const nombreCompleto = localStorage.getItem('nombreCompleto') || '';
-            const dni = localStorage.getItem('dni') || '';
-            const emailUsuario = localStorage.getItem('email') || '';
-            const telefono = localStorage.getItem('telefono') || ''; 
-            const diasTotales = localStorage.getItem('diasTotales') || '';            
-            const fechaLlegada = localStorage.getItem('fechaLlegada') || '';
-            const fechaSalida = localStorage.getItem('fechaSalida') || '';
-
+        botonEnviarConsulta.addEventListener('click', function () {
+            const nombreCompleto = localStorage.getItem('nombreCompleto') || 'No especificado';
+            const dni = localStorage.getItem('dni') || 'No especificado';
+            const emailUsuario = localStorage.getItem('email') || 'No especificado';
+            const telefono = localStorage.getItem('telefono') || 'No especificado';
+            const diasTotales = localStorage.getItem('diasTotales') || 'No especificado';
+            const fechaLlegada = localStorage.getItem('fechaLlegada') || 'No especificado';
+            const fechaSalida = localStorage.getItem('fechaSalida') || 'No especificado';
+        
             emailjs.send('service_dgomyco', 'template_bx1tqtb', {
-                to_email: 'lembranzasbr@gmail.com',  
+                to_email: 'lembranzasbr@gmail.com',
                 subject: 'Nueva Consulta Recibida',
-                nombreCompleto: nombreCompleto, 
-                dni: dni,                    
-                emailUsuario: emailUsuario,  
-                telefono: telefono,          
-                fechaLlegada: fechaLlegada,  
+                nombreCompleto: nombreCompleto,
+                dni: dni,
+                emailUsuario: emailUsuario,
+                telefono: telefono,
+                fechaLlegada: fechaLlegada,
                 fechaSalida: fechaSalida,
-                diasTotales: diasTotales,    
-                detallesCarrito: detallesCarrito,  
-                total: total                
+                diasTotales: diasTotales,
+                detallesCarrito: detallesCarrito,
+                total: total
             });
-
+        
             Swal.fire({
                 icon: 'success',
                 title: 'Solicitud enviada',
                 text: 'Nos estaremos poniendo en contacto contigo en la brevedad. ¡Nos vemos pronto!',
                 confirmButtonText: '¡Gracias!'
             }).then(() => {
-                localStorage.clear(); 
-                window.location.href = "/"; 
+                localStorage.clear();
+                window.location.href = "/";
             });
         });
     }
 }
-
-
 
 document.addEventListener('DOMContentLoaded', () => {
     const carouselImages = document.querySelector('.carousel-images');
@@ -282,4 +279,3 @@ document.addEventListener('DOMContentLoaded', () => {
 
     setInterval(slideCarousel, 2000);
 });
-

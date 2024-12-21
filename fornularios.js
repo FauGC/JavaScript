@@ -86,6 +86,11 @@ function mostrarFormularioFechas() {
     }
 
     confirmarFechasBtn.addEventListener('click', function () {
+        if (fechasConfirmadas) {
+            mostrarAlertaFechasBloqueadas();
+            return; // No continuar si las fechas ya están confirmadas
+        }
+
         const fechaLlegada = fechaLlegadaInput.value;
         const fechaSalida = fechaSalidaInput.value;
 
@@ -136,6 +141,7 @@ function mostrarFormularioFechas() {
             return;
         }
 
+        // Almacenar las fechas seleccionadas
         localStorage.setItem('fechaLlegada', fechaLlegada);
         localStorage.setItem('fechaSalida', fechaSalida);
 
@@ -145,7 +151,7 @@ function mostrarFormularioFechas() {
 
         fechasConfirmadas = true;
 
-        mostrarProductos(diasTotales);
+        mostrarProductos(diasTotales); // Mostrar el catálogo de productos
     });
 
     fechaLlegadaInput.addEventListener('input', function() {
