@@ -1,0 +1,135 @@
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>-Lembranzas-</title>
+    <link rel="stylesheet" href="indexstyle.css">
+
+    <link rel="icon" href="./imagenes/LOGO.ico">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Sawarabi+Gothic&display=swap" rel="stylesheet">
+
+    <meta name="description" content="Viajes y diversión">
+    <meta name="keywords" content="Viajes, viajes, VIAJES, Brasil, brasil, BRASIL, Brazil, brazil, BRAZIL, Cachoeiras, cachoeiras, CACHOEIRAS, cachoeiras do bom jesus, CACHOEIRAS DO BOM JESUS, Cachoeiras Do Bom Jesus, cachoeiras do bom jesús, CACHOEIRAS DO BOM JÉSUS, Cachoeiras Do Bom Jesús, Playa, PLAYA, playa, Praia, PRAIA, praia, familia, FAMILIA, Familia, Familiar, familiar, FAMILIAR, Playa Familiar, Playa familiar, PLAYA FAMILIAR">
+
+    <meta property="og:title" content="-Lembranzas- viajes y diversión">
+    <meta property="og:description" content="Viajes y diversión">
+    <meta property="og:image" content= "https://lembranza.netlify.app/imagenes/LOGO.png">
+    <meta property="og:url" content= "https://lembranza.netlify.app/">
+</head>
+
+<body>
+
+    <div class="body-index">
+
+        <header>
+            <div class="logo">
+                <div class="header-index">
+                    <img src="./imagenes/LOGO.png" alt="Logo lembranças">
+                </div>
+            </div>
+        </header>
+
+        <main>
+            <div class="eslogan">
+                <h1>Somos una empresa apasionada por crear los mejores recuerdos de cada aventura.</h1>
+            </div>
+
+            <section>
+                <div class="main-index">
+
+                    <h2>Destino: Brasil, Florianopolis, Cachoeiras do Bom Jesús</h2>
+
+                    <div class="imagen">
+
+                        <div class="contenedor-mapa">
+                            <!-- Mapa con zoom ajustado a 10 -->
+                            <iframe 
+                                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3521.735838760984!2d-48.4361299!3d-27.4205262!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x952743b244e927f1%3A0xa73e430b2d66c5a1!2sImigrantes+Apart+Hotel!5e0!3m2!1ses-419!2sco!4v1707162167997!5m2!1ses-419!2sco"
+                                width="600" 
+                                height="600" 
+                                style="border:0;" 
+                                allowfullscreen="" 
+                                loading="lazy" 
+                                referrerpolicy="no-referrer-when-downgrade">
+                            </iframe>
+                        </div>
+
+                        <div class="carousel-container">
+                            <div class="carousel-images">
+                                <img src="./imagenes/fondo1.png" alt="Imagen 1">
+                                <img src="./imagenes/fondo2.PNG" alt="Imagen 2">
+                                <img src="./imagenes/fondo3.PNG" alt="Imagen 3">
+                                <img src="./imagenes/fondo4.png" alt="Imagen 4">
+                                <img src="./imagenes/fondo5.jpg" alt="Imagen 5">
+                                <img src="./imagenes/fondo6.jpg" alt="Imagen 6">
+                                <img src="./imagenes/fondo7.png" alt="Imagen 7">
+                                <img src="./imagenes/fondo8.png" alt="Imagen 8">
+                                <img src="./imagenes/fondo9.jpg" alt="Imagen 9">
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+                <div class="cuestionarios">
+                    <div class="contenedor-datos">
+                    </div>
+                </div>
+
+                <div class="contenedor-fechas"></div>
+
+                <div class="titulodecatalogo">
+                    <h1>Cuando completes todos tus datos vas a poder elegir tus preferencias y abajo de todo revisar tu carrito:</h1>
+                </div>
+
+                <div class="categoria">
+                    <h2>Habitaciones</h2>
+                    <div class="productos productos-habitaciones">
+                    </div>
+                </div>
+
+                <div class="categoria">
+                    <h2></h2>
+                    <div class="productos-excursiones">
+                    </div>
+                </div>
+
+                <div class="ver-carrito">
+                    <h2>Mirá tu carrito:</h2>
+
+                    <div id="carrito-container"></div>
+                </div>
+
+            </div>
+            </section>
+        </main>
+
+        <footer>
+            <div class="redes">
+                <h2>Para más información y sugerencias puedes seguirnos en nuestras redes:</h2>
+                <div class="botones-redes">
+                    <a href="mailto:lembranzasbr@gmail.com" target="_blank"><img src="./imagenes/email.png" alt="e-mail"><h1>lembranzasbr@gmail.com</h1>
+                    </a>
+                </div>
+            </div>
+
+            <div class="powered-by">
+                Powered by <span class="baradero-street">Baradero Street</span>
+            </div>
+
+            <div id="toast"></div>
+        </footer>
+
+    </div>
+
+    <script type="text/javascript"src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="script.js"></script>
+    <script src="fornularios.js"></script>
+    <script src="agregarCarrito.js"></script>
+</body>
+
+</html>

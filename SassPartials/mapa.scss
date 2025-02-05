@@ -1,0 +1,23 @@
+
+.contenedor-mapa {
+    padding: 20px;
+    background: linear-gradient(to bottom, #fbf4b7, #ffffff);
+    margin-bottom: 5px;
+    display: flex;
+    flex-direction: c;
+    align-items: center;
+    border: 1px solid #ccc;
+    padding: 1rem;
+    margin: 0.5rem;
+    border-radius: 10px;
+    box-sizing: border-box;
+    text-align: center;
+    justify-content: center;
+    
+    iframe {
+        width: 500px;
+        height: 450px;
+        border: 0;
+    }
+}
+
